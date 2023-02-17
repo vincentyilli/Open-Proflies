@@ -64,7 +64,7 @@ proxy-groups:
   - 美国节点
   type: select
   
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Microsoft.png
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Microsoft.png
   name: Microsoft
   proxies:
   - DIRECT
@@ -75,7 +75,7 @@ proxy-groups:
   - 美国节点
   type: select
   
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Google.png
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Google_Suite/Google.png
   name: Google
   proxies:
   - DIRECT
@@ -138,7 +138,7 @@ proxy-groups:
   - 美国节点
   type: select
   
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.png
   name: Adblock
   proxies:
   - DIRECT
