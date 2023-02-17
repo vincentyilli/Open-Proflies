@@ -52,6 +52,7 @@ proxy-groups:
   proxies: []
   type: select
   url: http://cp.cloudflare.com/generate_204
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Apple.png
   name: Apple
   proxies:
@@ -62,6 +63,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Microsoft.png
   name: Microsoft
   proxies:
@@ -72,6 +74,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Google.png
   name: Google
   proxies:
@@ -82,6 +85,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/StreamingSE.png
   name: Bilibili
   proxies:
@@ -89,6 +93,7 @@ proxy-groups:
   - 香港节点
   - 台湾节点
   type: select  
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/YouTube.png
   name: YouTube
   proxies:
@@ -99,6 +104,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select  
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Steam.png
   name: Game
   proxies:
@@ -109,6 +115,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select  
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Telegram.png
   name: Telegram
   proxies:
@@ -118,7 +125,8 @@ proxy-groups:
   - 日本节点
   - 狮城节点
   - 美国节点
-  type: select 
+  type: select
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
   name: Globe
   proxies:
@@ -128,8 +136,9 @@ proxy-groups:
   - 日本节点
   - 狮城节点
   - 美国节点
-  type: select 
-  - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
+  type: select
+  
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
   name: Adblock
   proxies:
   - DIRECT
@@ -139,6 +148,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Final.png
   name: Final
   proxies:
@@ -149,6 +159,7 @@ proxy-groups:
   - 狮城节点
   - 美国节点
   type: select
+  
 - filter: "港|\U0001F1ED\U0001F1F0|HK|(?i)Hong"
   icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Hong_Kong.png
   include-all: true
@@ -159,6 +170,7 @@ proxy-groups:
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
+  
 - filter: "台|\U0001F1E8\U0001F1F3|\U0001F1F9\U0001F1FC|湾|TW|(?i)Taiwan"
   icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Taiwan.png
   include-all: true
@@ -169,6 +181,7 @@ proxy-groups:
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
+  
 - filter: "日|\U0001F1EF\U0001F1F5|东京|JP|(?i)Japan"
   icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Japan.png
   include-all: true
@@ -179,6 +192,7 @@ proxy-groups:
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
+  
 - filter: "新加坡|坡|狮城|\U0001F1F8\U0001F1EC|SG|(?i)Singapore"
   icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Singapore.png
   include-all: true
@@ -188,7 +202,8 @@ proxy-groups:
   proxies: []
   tolerance: 50
   type: url-test
-  url: http://cp.cloudflare.com/generate_204 
+  url: http://cp.cloudflare.com/generate_204
+  
 - filter: "美|\U0001F1FA\U0001F1F2|US|(?i)States|American"
   icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_States.png
   include-all: true
@@ -199,6 +214,7 @@ proxy-groups:
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
+  
 rule-providers:
   Direct:
     type: http
