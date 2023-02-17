@@ -139,6 +139,17 @@ proxy-groups:
   - 美国节点
   type: select
   
+  - icon: 
+  name: Adblock
+  proxies:
+  - DIRECT
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
+  type: select
+  
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Final.png
   name: Final
   proxies:
@@ -286,9 +297,9 @@ rule-providers:
     interval: 86400
 rules:
   - RULE-SET,Direct,DIRECT
-  - RULE-SET,AdvertisingLite,🆎 AdBlock
-  - RULE-SET,Hijacking,🆎 AdBlock
-  - RULE-SET,Privacy,🆎 AdBlock
+  - RULE-SET,AdvertisingLite,AdBlock
+  - RULE-SET,Hijacking,AdBlock
+  - RULE-SET,Privacy,AdBlock
   - RULE-SET,YouTube,YouTube
   - RULE-SET,Apple,Apple
   - RULE-SET,Microsoft,Microsoft
