@@ -18,6 +18,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   HK:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 港|HK|(?i)Hong
     health-check:
@@ -26,6 +27,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   JP:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 日|东京|JP|(?i)Japan
     health-check:
@@ -34,6 +36,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   US:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 美|US|(?i)States|American
     health-check:
@@ -42,6 +45,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   TW:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 台|湾|TW|(?i)Taiwan
     health-check:
@@ -50,6 +54,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   SG:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 新|坡|SG|(?i)Singapore
     health-check:
@@ -58,6 +63,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   UK:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 英|UK|(?i)Kingdom
     health-check:
@@ -66,6 +72,7 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
   AU:
     type: file
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./All.yaml
     filter: 澳|AU|(?i)Austria
     health-check:
