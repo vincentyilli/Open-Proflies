@@ -11,6 +11,7 @@ proxy-providers:
     url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
     # 也可以使用在线订阅转换，在进阶模式中勾选`输出为Node List`，将Clash订阅链接转换为只包含节点信息的配置，并替换掉整个引号""内的链接
+    path: ./Server/Airport.yaml
     interval: 3600
     health-check:
       enable: true
@@ -18,7 +19,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   HK:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 港|HK|(?i)Hong
     health-check:
@@ -27,7 +28,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   JP:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 日|东京|JP|(?i)Japan
     health-check:
@@ -36,7 +37,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   US:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 美|US|(?i)States|American
     health-check:
@@ -45,7 +46,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   TW:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 台|湾|TW|(?i)Taiwan
     health-check:
@@ -54,7 +55,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   SG:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 新|坡|SG|(?i)Singapore
     health-check:
@@ -63,7 +64,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   UK:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 英|UK|(?i)Kingdom
     health-check:
@@ -72,7 +73,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   AU:
     type: http
-    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    path: ./Server/Airport.yaml
     interval: 3600
     filter: 澳|AU|(?i)Austria
     health-check:
