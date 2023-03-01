@@ -11,69 +11,72 @@ proxy-providers:
     url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
     # 也可以使用在线订阅转换，在进阶模式中勾选`输出为Node List`，将Clash订阅链接转换为只包含节点信息的配置，并替换掉整个引号""内的链接
-    path: ./Server/Airport.yaml
     interval: 3600
+    path: ./all.yaml
     health-check:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
+#香港节点     
   HK:
-    type: http
-    path: ./Server/Airport.yaml
-    interval: 3600
+    type: file
+    path: ./all.yaml
     filter: 港|HK|(?i)Hong
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+ #日本节点
   JP:
-    type: http
-    path: ./Server/Airport.yaml
-    interval: 3600
+    type: file
+    path: ./all.yaml
     filter: 日|东京|JP|(?i)Japan
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+ #美国节点
   US:
-    type: http
-    path: ./Server/Airport.yaml
-    interval: 3600
+    type: file
+    path: ./all.yaml
     filter: 美|US|(?i)States|American
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+ #台湾节点
   TW:
-    type: http
-    path: ./Server/Airport.yaml
-    interval: 3600
+    type: file
+    path: ./all.yaml
     filter: 台|湾|TW|(?i)Taiwan
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+  #新加坡节点
   SG:
-    type: http
-    path: ./Server/Airport.yaml
+    type: file
+    path: ./all.yaml
     interval: 3600
     filter: 新|坡|SG|(?i)Singapore
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+  #英国节点
   UK:
-    type: http
-    path: ./Server/Airport.yaml
+    type: file
+    path: ./all.yaml
     interval: 3600
     filter: 英|UK|(?i)Kingdom
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+  #澳洲节点
   AU:
-    type: http
-    path: ./Server/Airport.yaml
+    type: file
+    path: ./all.yaml
     interval: 3600
     filter: 澳|AU|(?i)Austria
     health-check:
@@ -376,7 +379,7 @@ rule-providers:
   China_Domain:
     type: http
     behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China_Domain.yaml
     path: ./ruleset/China_Domain.yaml
     interval: 86400
   ProxyLite:
