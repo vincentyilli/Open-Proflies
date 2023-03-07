@@ -24,9 +24,6 @@ dns:
   - '*.battle.net'
   fake-ip-range: 198.18.0.1/16
   listen: 0.0.0.0:1053
-  nameserver:
-  - https://dns.alidns.com/dns-query
-  - https://doh.dns.sb/dns-query
 external-controller: 127.0.0.1:9090
 log-level: silent
 mixed-port: 7890
@@ -52,6 +49,28 @@ proxy-groups:
   proxies: []
   type: select
   url: http://cp.cloudflare.com/generate_204
+
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
+  name: Globe
+  proxies:
+  - DIRECT
+  - HK
+  - TW
+  - JP
+  - SG
+  - US
+  type: select
+
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/YouTube.png
+  name: GlobeMeida
+  proxies:
+  - DIRECT
+  - HK
+  - TW
+  - JP
+  - SG
+  - US
+  type: select  
   
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Apple.png
   name: Apple
@@ -86,25 +105,14 @@ proxy-groups:
   - US
   type: select
   
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/StreamingSE.png
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/BiliBili.png
   name: Bilibili
   proxies:
   - DIRECT
   - HK
   - TW
   type: select  
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/YouTube.png
-  name: YouTube
-  proxies:
-  - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
-  type: select  
-  
+    
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Steam.png
   name: Game
   proxies:
@@ -118,17 +126,6 @@ proxy-groups:
   
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Telegram.png
   name: Telegram
-  proxies:
-  - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
-  type: select
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
-  name: Globe
   proxies:
   - DIRECT
   - HK
@@ -212,97 +209,119 @@ proxy-groups:
   url: http://cp.cloudflare.com/generate_204
   
 rule-providers:
-  Direct:
+  UnBan:
     type: http
-    behavior: classical
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
-    path: ./ruleset/direct.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
+    path: ./ruleset/UnBan.yaml
     interval: 86400
-  Advertising:
+  LocalAreaNetwork:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
+    path: ./ruleset/LocalAreaNetwork.yaml
+    interval: 86400
+  Ad:
     type: http
     behavior: domain-text
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Domain.txt
-    path: ./ruleset/Advertising_Domain.txt
+    url: https://anti-ad.net/surge2.txt
+    path: ./ruleset/surge2.txt
     interval: 86400
-  YouTube:
+  ProxyMedia:
     type: http
     behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/YouTube/YouTube.yaml
-    path: ./ruleset/YouTube.yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml
+    path: ./ruleset/ProxyMedia.yaml
     interval: 86400
   Apple:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Apple.yaml
     path: ./ruleset/Apple.yaml
     interval: 86400
   Microsoft:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
+    interval: 86400
+  OneDrive:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/OneDrive.yaml
+    path: ./ruleset/OneDrive.yaml
     interval: 86400
   Google:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml
     path: ./ruleset/Google.yaml
     interval: 86400
   Telegram:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml
     path: ./ruleset/Telegram.yaml
     interval: 86400
   BiliBili:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml
     path: ./ruleset/BiliBili.yaml
     interval: 86400
-  Game:
+  Steam:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
-    path: ./ruleset/Game.yaml
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
+    path: ./ruleset/Steam.yaml
     interval: 86400
-  ChinaIPs_IP:
+  Epic:
     type: http
-    behavior: ipcidr-text 
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt
-    path: ./ruleset/ChinaIPs_IP.txt
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
+    path: ./ruleset/Epic.yaml
     interval: 86400
-  ProxyLite_Doamin:
+  ChinaIP:
     type: http
-    behavior: domain-text
-    url: https://ghproxy.com/https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/ProxyLite/ProxyLite_Domain.txt
-    path: ./ruleset/ProxyLite_Domain.txt
+    behavior: ipcidr
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml
+    path: ./ruleset/ChinaIP.yaml
     interval: 86400
+  ChinaDomain:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
+    path: ./ruleset/ChinaDomain.yaml
+    interval: 86400
+  ProxyLite:
+    type: http
+    behavior: domain
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml
+    path: ./ruleset/ProxyLite.yaml
+    interval: 86400
+
+
 rules:
-  - RULE-SET,Direct,DIRECT
-  - RULE-SET,Advertising,AdBlock
-  - RULE-SET,YouTube,YouTube
+  - RULE-SET,UnBan,DIRECT
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  - RULE-SET,Ad,Adblock
+  - RULE-SET,ProxyMedia,GlobeMeida
   - RULE-SET,Apple,Apple
   - RULE-SET,Microsoft,Microsoft
-  - RULE-SET,Google,Google
+  - RULE-SET,OneDrive,Microsoft
+  - RULE-SET,Google,Googel
   - RULE-SET,Telegram,Telegram
   - RULE-SET,BiliBili,BiliBili
-  - RULE-SET,Game,Game
-  - RULE-SET,ProxyLite,Global
-  - RULE-SET,ChinaIPs_IP,DIRECT
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
-  - IP-CIDR,224.0.0.0/4,DIRECT
-  - IP-CIDR,fe80::/10,DIRECT
-  - IP-CIDR,119.28.28.28/32,DIRECT
-  - IP-CIDR,182.254.116.0/24,DIRECT
-  - GEOIP,CN,DIRECT
+  - RULE-SET,Steam,Game
+  - RULE-SET,Epic,Game
+  - RULE-SET,ProxyLite,Globe
+  - RULE-SET,ChinaIP,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
   - MATCH,Final
 
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
+
 
