@@ -304,19 +304,13 @@ proxy-groups:
 rule-providers:
   UnBan:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
     path: ./ruleset/UnBan.yaml
     interval: 86400
-  Download:
-    type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Download.yaml
-    path: ./ruleset/Download.yaml
-    interval: 86400
   LocalAreaNetwork:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
     path: ./ruleset/LocalAreaNetwork.yaml
     interval: 86400
@@ -334,49 +328,49 @@ rule-providers:
     interval: 86400
   Apple:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Apple.yaml
     path: ./ruleset/Apple.yaml
     interval: 86400
   Microsoft:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
     interval: 86400
   OneDrive:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/OneDrive.yaml
     path: ./ruleset/OneDrive.yaml
     interval: 86400
   Google:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml
     path: ./ruleset/Google.yaml
     interval: 86400
   Telegram:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml
     path: ./ruleset/Telegram.yaml
     interval: 86400
   BiliBili:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml
     path: ./ruleset/BiliBili.yaml
     interval: 86400
   Steam:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
     path: ./ruleset/Steam.yaml
     interval: 86400
   Epic:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
     path: ./ruleset/Epic.yaml
     interval: 86400
@@ -388,19 +382,18 @@ rule-providers:
     interval: 86400
   ChinaDomain:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
     path: ./ruleset/ChinaDomain.yaml
     interval: 86400
   ProxyLite:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml
     path: ./ruleset/ProxyLite.yaml
     interval: 86400
 rules:
   - RULE-SET,UnBan,DIRECT
-  - RULE-SET,Download,DIRECT
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,Ad,🆎 AdBlock
   - RULE-SET,ProxyMedia,🎬 国际媒体
@@ -413,9 +406,55 @@ rules:
   - RULE-SET,Steam,🎮 游戏平台
   - RULE-SET,Epic,🎮 游戏平台
   - RULE-SET,ProxyLite,🌏 国外网站
+  - PROCESS-NAME,v2ray,DIRECT
+  - PROCESS-NAME,xray,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,trojan,DIRECT
+  - PROCESS-NAME,trojan-go,DIRECT
+  - PROCESS-NAME,ss-local,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,leaf,DIRECT
+  - PROCESS-NAME,v2ray.exe,DIRECT
+  - PROCESS-NAME,xray.exe,DIRECT
+  - PROCESS-NAME,naive.exe,DIRECT
+  - PROCESS-NAME,trojan.exe,DIRECT
+  - PROCESS-NAME,trojan-go.exe,DIRECT
+  - PROCESS-NAME,ss-local.exe,DIRECT
+  - PROCESS-NAME,privoxy.exe,DIRECT
+  - PROCESS-NAME,leaf.exe,DIRECT
+  - PROCESS-NAME,Surge,DIRECT
+  - PROCESS-NAME,Surge 2,DIRECT
+  - PROCESS-NAME,Surge 3,DIRECT
+  - PROCESS-NAME,Surge 4,DIRECT
+  - PROCESS-NAME,Surge%202,DIRECT
+  - PROCESS-NAME,Surge%203,DIRECT
+  - PROCESS-NAME,Surge%204,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qBittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
+  - PROCESS-NAME,aria2c.exe,DIRECT
+  - PROCESS-NAME,BitComet.exe,DIRECT
+  - PROCESS-NAME,fdm.exe,DIRECT
+  - PROCESS-NAME,NetTransport.exe,DIRECT
+  - PROCESS-NAME,qbittorrent.exe,DIRECT
+  - PROCESS-NAME,Thunder.exe,DIRECT
+  - PROCESS-NAME,ThunderVIP.exe,DIRECT
+  - PROCESS-NAME,transmission-daemon.exe,DIRECT
+  - PROCESS-NAME,transmission-qt.exe,DIRECT
+  - PROCESS-NAME,uTorrent.exe,DIRECT
+  - PROCESS-NAME,WebTorrent.exe,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,ChinaIP,🌏 国内网站
   - RULE-SET,ChinaDomain,🌏 国内网站
-  - GEOIP,CN,🌏 国内网站
+  - GEOIP,CN,🌏 国内网站,no-resolve
   - MATCH,🐟 漏网之鱼
 
 
