@@ -328,7 +328,7 @@ rule-providers:
     interval: 86400
   GlobalMedia:
     type: http
-    behavior: classical
+    behavior: domain
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Domain.txt
     path: ./ruleset/GlobalMedia.yaml
     interval: 86400
@@ -341,7 +341,7 @@ rule-providers:
   Microsoft:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
     interval: 86400
   Github:
