@@ -1,8 +1,10 @@
-下载Clash for Windows
+使用方法
 ---
-### [CFW下载地址](https://github.com/Fndroid/clash_for_windows_pkg/releases)
+
+
+#### [CFW下载地址](https://github.com/Fndroid/clash_for_windows_pkg/releases)
 * 建议下载便携版`Clash.for.Windows-x.xx.xx-win.7z`，并于`Clash for Windows`目录下新建`data`文件夹，以启用便携模式
-### [CFW汉化补丁](https://github.com/BoyceLig/Clash_Chinese_Patch/releases)   
+#### [CFW汉化补丁](https://github.com/BoyceLig/Clash_Chinese_Patch/releases)   
 * 下载 `app.7z` 或 `app.zip` 文件(两个压缩包内容一样)后，解压压缩包，请自行替换`Clash for Windows\resources\app.asar`目录中的 `app.asar` 文件
 
 
@@ -44,7 +46,7 @@ proxy-providers:
     # 建议使用本地自建后端订阅转换
 ```
 
-
+纯懒人方法见：[订阅配置转换](https://github.com/Repcz/Open-Proflies/wiki/Clash-For-Windows#%E5%9C%A8%E7%BA%BF%E8%AE%A2%E9%98%85%E8%BD%AC%E6%8D%A2%E4%B8%8D%E6%8E%A8%E8%8D%90)
 
 
 ***
