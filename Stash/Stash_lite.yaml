@@ -83,13 +83,6 @@ rule-providers:
     path: ./ruleset/Global.yaml
     interval: 86400
 
-  private:
-    type: http
-    behavior: domain-text
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
-    path: ./ruleset/private.yaml
-    interval: 86400
-
   lancidr:
     type: http
     behavior: ipcidr
@@ -100,7 +93,6 @@ rule-providers:
 rules:
 - DOMAIN,clash.razord.top,DIRECT
 - DOMAIN,yacd.haishan.me,DIRECT
-- RULE-SET,private,DIRECT
 - RULE-SET,icloud,DIRECT
 - RULE-SET,apple,DIRECT
 - RULE-SET,Streaming,国外网站
