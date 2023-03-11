@@ -330,4 +330,4 @@ rules:
   - RULE-SET,cncidr,🌏 国内网站
   - RULE-SET,telegramcidr,📟 Telegram
   - GEOIP,CN,🌏 国内网站,,no-resolve
-  - MATCH,🌏 国内网站
+  - MATCH,🌏 国外网站
