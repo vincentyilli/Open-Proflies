@@ -1,0 +1,333 @@
+allow-lan: true
+bind-address: '*'
+dns:
+  default-nameserver:
+  - 119.29.29.29
+  - 119.28.28.28
+  - 223.5.5.5
+  - 114.114.114.114
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+  - '*.lan'
+  - localhost.ptlogin2.qq.com
+  - +.srv.nintendo.net
+  - +.stun.playstation.net
+  - +.msftconnecttest.com
+  - +.msftncsi.com
+  - +.xboxlive.com
+  - msftconnecttest.com
+  - xbox.*.microsoft.com
+  - '*.battlenet.com.cn'
+  - '*.battlenet.com'
+  - '*.blzstatic.cn'
+  - '*.battle.net'
+  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:1053
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.dns.sb/dns-query
+external-controller: 127.0.0.1:9090
+log-level: silent
+mixed-port: 7890
+mode: Rule
+proxy-providers:
+  All:
+    type: http
+    url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
+    # 也可以使用在线订阅转换，在进阶模式中勾选`输出为Node List`，将Clash订阅链接转换为只包含节点信息的配置，并替换掉整个引号""内的链接
+    interval: 3600
+    path: ./all.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+#香港节点     
+  HK:
+    type: file
+    path: ./all.yaml
+    filter: 港|HK|(?i)Hong
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+ #日本节点
+  JP:
+    type: file
+    path: ./all.yaml
+    filter: 日|东京|JP|(?i)Japan
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+ #美国节点
+  US:
+    type: file
+    path: ./all.yaml
+    filter: 美|US|(?i)States|American
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+ #台湾节点
+  TW:
+    type: file
+    path: ./all.yaml
+    filter: 台|湾|TW|(?i)Taiwan
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+  #新加坡节点
+  SG:
+    type: file
+    path: ./all.yaml
+    interval: 3600
+    filter: 新|坡|SG|(?i)Singapore
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+  #英国节点
+  UK:
+    type: file
+    path: ./all.yaml
+    interval: 3600
+    filter: 英|UK|(?i)Kingdom
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+  #澳洲节点
+  AU:
+    type: file
+    path: ./all.yaml
+    interval: 3600
+    filter: 澳|AU|(?i)Austria
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+proxies: null
+proxy-groups:
+  - name: 🚀 手动切换
+    type: select
+    use:
+      - All
+    proxies:
+      - ✈️ 自动选择
+  - name: ✈️ 自动选择
+    type: url-test
+    use:
+      - All
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+  - name: 🌏 国外网站
+    type: select
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬  新加坡节点
+      - 🇬🇧   英国节点
+      - 🇦🇺   澳洲节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬  新加坡节点
+      - 🇬🇧   英国节点
+      - 🇦🇺   澳洲节点
+      - 🚀 手动切换
+  - name: 📟 Telegram
+    type: select
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬  新加坡节点
+      - 🇬🇧   英国节点
+      - 🇦🇺   澳洲节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🌏 国内网站
+    type: select
+    proxies:
+      - DIRECT
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬  新加坡节点
+      - 🇬🇧   英国节点
+      - 🇦🇺   澳洲节点
+      - 🚀 手动切换
+  - name: 🆎 AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - 🚀 手动切换
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬  新加坡节点
+      - 🇬🇧   英国节点
+      - 🇦🇺   澳洲节点
+      - 🚀 手动切换
+      - DIRECT
+  - name: 🇭🇰 香港节点
+    type: url-test
+    use:
+      - HK
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - REJECT
+  - name: 🇯🇵 日本节点
+    type: url-test
+    use:
+      - JP
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - REJECT
+  - name: 🇨🇳 台湾节点
+    type: url-test
+    use:
+      - TW
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - REJECT
+  - name: 🇺🇲 美国节点
+    type: url-test
+    use:
+      - US
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - REJECT
+  - name: 🇸🇬  新加坡节点
+    type: url-test
+    use:
+      - SG
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - REJECT
+  - name: 🇬🇧   英国节点
+    type: url-test
+    use:
+      - UK
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    proxies:
+      - REJECT
+  - name: 🇦🇺   澳洲节点
+    type: url-test
+    use:
+      - AU
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    proxies:
+      - REJECT
+
+
+rule-providers:
+  Ad:
+    type: http
+    behavior: domain
+    url: https://anti-ad.net/clash.yaml
+    path: ./ruleset/anti-ad-clash.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+rules:
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,🌏 国内网站
+  - RULE-SET,Ad,🆎 AdBlock
+  - RULE-SET,icloud,🍎 苹果服务
+  - RULE-SET,apple,🍎 苹果服务
+  - RULE-SET,proxy,🌏 国外网站
+  - RULE-SET,direct,🌏 国内网站
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,🌏 国内网站
+  - RULE-SET,telegramcidr,📟 Telegram
+  - GEOIP,CN,🌏 国内网站,,no-resolve
+  - MATCH,🌏 国内网站
