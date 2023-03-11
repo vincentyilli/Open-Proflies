@@ -7,8 +7,15 @@
 
 
 
-本地配置转换
+本地配置转换（推荐）
 ---
+* 打开配置文件主目录
+![、](https://github.com/Repcz/Open-Proflies/blob/main/Clash/Photo/%E6%89%93%E5%BC%80%E7%9B%AE%E5%BD%95.png)
+* 在目录下新建`all.yaml`
+* 将机场下发的配置文件内容复制进`all.yaml`
+> `all.yaml`可以改成任意名称，但必须于同步修改配置文件中的`path: ./all.yaml`，适用于切换多个机场
+
+![、、](https://github.com/Repcz/Open-Proflies/blob/main/Clash/Photo/%E6%96%B0%E5%BB%BAall.yaml.png)
 * CFW中导入 **配置**
 ```
 https://ghproxy.com/https://raw.githubusercontent.com/Repcz/Open-Proflies/main/Clash/CFW.yaml
