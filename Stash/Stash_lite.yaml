@@ -49,14 +49,16 @@ proxy-groups:
   proxies: []
   type: select
   url: http://cp.cloudflare.com/generate_204
-
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
-  name: Globe
-  proxies:
-  - DIRECT
-  - Select
-  type: select
   
+- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Auto_Speed.png
+  include-all: true
+  interval: 120
+  lazy: true
+  name: Proxy
+  proxies: []
+  type: select
+  url: http://cp.cloudflare.com/generate_204
+
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.png
   name: Adblock
   proxies:
@@ -65,7 +67,7 @@ proxy-groups:
   type: select
   
 rule-providers:
-  Ad:
+  reject:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt
@@ -132,14 +134,14 @@ rules:
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
-  - RULE-SET,AD,Adblock
+  - RULE-SET,reject,Adblock
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
-  - RULE-SET,proxy,Globe
+  - RULE-SET,proxy,Proxy
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
-  - RULE-SET,telegramcidr,Globe
+  - RULE-SET,telegramcidr,Proxy
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH,Globe
 script:
