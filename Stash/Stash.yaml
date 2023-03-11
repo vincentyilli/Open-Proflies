@@ -277,19 +277,20 @@ rule-providers:
 rules:
 - RULE-SET,Direct,DIRECT
 - RULE-SET,Lan,DIRECT
-- RULE-SET,Ad,Adblock
-- RULE-SET,GlobalMedia,GlobeMeida
-- RULE-SET,Apple,Apple
-- RULE-SET,Microsoft,Microsoft
-- RULE-SET,Github,Microsoft
-- RULE-SET,Google,Googel
-- RULE-SET,Telegram,Telegram
-- RULE-SET,BiliBili,BiliBili
-- RULE-SET,Game,Game
-- RULE-SET,ProxyLite,Globe
+- RULE-SET,Ad,广告拦截
+- RULE-SET,GlobalMedia,国际媒体
+- RULE-SET,Apple,苹果服务
+- RULE-SET,Microsoft,微软服务
+- RULE-SET,Github,微软服务
+- RULE-SET,Google,谷歌服务
+- RULE-SET,Telegram,电报消息
+- RULE-SET,BiliBili,哔哩哔哩
+- RULE-SET,Game,游戏平台
+- RULE-SET,ProxyLite,国外网站
 - RULE-SET,ChinaIP,DIRECT
 - GEOIP,CN,DIRECT,no-resolve
 - MATCH,Final
+
 
 script:
   shortcuts:
