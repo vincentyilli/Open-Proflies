@@ -40,274 +40,257 @@ proxy-providers:
     url: http://your-service-provider
     interval: 600
 
+
 proxy-groups:
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png
   include-all: true
   interval: 120
   lazy: true
-  name: Select
+  name: 手动选择
   proxies: []
   type: select
   url: http://cp.cloudflare.com/generate_204
-
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Speedtest.png
-  name: Globe
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+  name: 国外网站
   proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
   - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
   type: select
-
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/YouTube.png
-  name: GlobeMeida
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+  name: 国际媒体
   proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
   - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
-  type: select  
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Apple.png
-  name: Apple
-  proxies:
-  - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
   type: select
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Microsoft.png
-  name: Microsoft
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png
+  name: 苹果服务
   proxies:
   - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
   type: select
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Google_Suite/Google.png
-  name: Google
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+  name: 微软服务
   proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
   - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
   type: select
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/BiliBili.png
-  name: Bilibili
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+  name: 谷歌服务
   proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
   - DIRECT
-  - HK
-  - TW
-  type: select  
-    
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Steam.png
-  name: Game
-  proxies:
-  - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
-  type: select  
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Social_Media/Telegram.png
-  name: Telegram
-  proxies:
-  - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
   type: select
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.png
-  name: Adblock
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png
+  name: 哔哩哔哩
+  proxies:
+  - DIRECT
+  - 香港节点
+  - 台湾节点
+  type: select
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  name: 游戏平台
+  proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
+  - DIRECT
+  type: select
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+  name: 电报消息
+  proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
+  - DIRECT
+  type: select
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+  name: 广告拦截
   proxies:
   - REJECT
   - DIRECT
   type: select
-  
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Final.png
-  name: Final
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+  name: 兜底分流
   proxies:
+  - 香港节点
+  - 台湾节点
+  - 日本节点
+  - 狮城节点
+  - 美国节点
   - DIRECT
-  - HK
-  - TW
-  - JP
-  - SG
-  - US
   type: select
-  
 - filter: "港|\U0001F1ED\U0001F1F0|HK|(?i)Hong"
-  icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Hong_Kong.png
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
   include-all: true
   interval: 120
   lazy: true
-  name: HK
+  name: 香港节点
   proxies: []
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
-  
 - filter: "台|\U0001F1E8\U0001F1F3|\U0001F1F9\U0001F1FC|湾|TW|(?i)Taiwan"
-  icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Taiwan.png
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
   include-all: true
   interval: 120
   lazy: true
-  name: TW
+  name: 台湾节点
   proxies: []
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
-  
 - filter: "日|\U0001F1EF\U0001F1F5|东京|JP|(?i)Japan"
-  icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Japan.png
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
   include-all: true
   interval: 120
   lazy: true
-  name: JP
+  name: 日本节点
   proxies: []
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
-  
 - filter: "新加坡|坡|狮城|\U0001F1F8\U0001F1EC|SG|(?i)Singapore"
-  icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/Singapore.png
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
   include-all: true
   interval: 120
   lazy: true
-  name: SG
+  name: 狮城节点
   proxies: []
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
-  
 - filter: "美|\U0001F1FA\U0001F1F2|US|(?i)States|American"
-  icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Rounded_Rectangle/United_States.png
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
   include-all: true
   interval: 120
   lazy: true
-  name: US
+  name: 美国节点
   proxies: []
   tolerance: 50
   type: url-test
   url: http://cp.cloudflare.com/generate_204
-  
-rule-providers:
-  Direct:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml
-    path: ./ruleset/Direct.yaml
-    interval: 86400
-  Lan:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
-    path: ./ruleset/Lan.yaml
-    interval: 86400
-  Ad:
-    type: http
-    behavior: domain-text
-    url: https://anti-ad.net/surge2.txt
-    path: ./ruleset/surge2.txt
-    interval: 86400
-  GlobalMedia:
-    type: http
-    behavior: domain-text
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Domain.txt
-    path: ./ruleset/GlobalMedia_Domain.yaml
-    interval: 86400
-  Apple:
-    type: http
-    behavior: domain-text
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.txt
-    path: ./ruleset/Apple.yaml
-    interval: 86400
-  Microsoft:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
-    path: ./ruleset/Microsoft.yaml
-    interval: 86400
-  Github:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
-    path: ./ruleset/Github.yaml
-    interval: 86400
-  Google:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
-    path: ./ruleset/Google.yaml
-    interval: 86400
-  Telegram:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
-    path: ./ruleset/Telegram.yaml
-    interval: 86400
-  BiliBili:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
-    path: ./ruleset/BiliBili.yaml
-    interval: 86400
-  Game:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
-    path: ./ruleset/Game.yaml
-    interval: 86400
-  ChinaIP:
-    type: http
-    behavior: ipcidr-text
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt
-    path: ./ruleset/ChinaIP.yaml
-    interval: 86400
-  ProxyLite:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
-    path: ./ruleset/ProxyLite.yaml
-    interval: 86400
 
+rule-providers:
+  Ad:
+    behavior: domain-text
+    interval: 86400
+    path: ./ruleset/surge2.txt
+    type: http
+    url: https://anti-ad.net/surge2.txt
+  Apple:
+    behavior: domain-text
+    interval: 86400
+    path: ./ruleset/Apple.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.txt
+  BiliBili:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/BiliBili.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
+  ChinaIP:
+    behavior: ipcidr-text
+    interval: 86400
+    path: ./ruleset/ChinaIP.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt
+  Direct:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Direct.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml
+  Game:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Game.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
+  Github:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Github.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
+  GlobalMedia:
+    behavior: domain-text
+    interval: 86400
+    path: ./ruleset/GlobalMedia_Domain.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Domain.txt
+  Google:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Google.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
+  Lan:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Lan.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+  Microsoft:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Microsoft.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
+  ProxyLite:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/ProxyLite.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
+  Telegram:
+    behavior: classical
+    interval: 86400
+    path: ./ruleset/Telegram.yaml
+    type: http
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
 
 rules:
-  - RULE-SET,Direct,DIRECT
-  - RULE-SET,Lan,DIRECT
-  - RULE-SET,Ad,Adblock
-  - RULE-SET,GlobalMedia,GlobeMeida
-  - RULE-SET,Apple,Apple
-  - RULE-SET,Microsoft,Microsoft
-  - RULE-SET,Github,Microsoft
-  - RULE-SET,Google,Googel
-  - RULE-SET,Telegram,Telegram
-  - RULE-SET,BiliBili,BiliBili
-  - RULE-SET,Game,Game
-  - RULE-SET,ProxyLite,Globe
-  - RULE-SET,ChinaIP,DIRECT
-  - GEOIP,CN,DIRECT,no-resolve
-  - MATCH,Final
+- RULE-SET,Direct,DIRECT
+- RULE-SET,Lan,DIRECT
+- RULE-SET,Ad,Adblock
+- RULE-SET,GlobalMedia,GlobeMeida
+- RULE-SET,Apple,Apple
+- RULE-SET,Microsoft,Microsoft
+- RULE-SET,Github,Microsoft
+- RULE-SET,Google,Googel
+- RULE-SET,Telegram,Telegram
+- RULE-SET,BiliBili,BiliBili
+- RULE-SET,Game,Game
+- RULE-SET,ProxyLite,Globe
+- RULE-SET,ChinaIP,DIRECT
+- GEOIP,CN,DIRECT,no-resolve
+- MATCH,Final
 
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
-
-
