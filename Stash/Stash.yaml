@@ -289,7 +289,7 @@ rules:
 - RULE-SET,ProxyLite,国外网站
 - RULE-SET,ChinaIP,DIRECT
 - GEOIP,CN,DIRECT,no-resolve
-- MATCH,Final
+- MATCH,兜底分流
 
 
 script:
