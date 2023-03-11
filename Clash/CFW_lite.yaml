@@ -176,18 +176,6 @@ proxy-groups:
     proxies:
       - REJECT
       - 🚀 手动切换
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
-      - 🚀 手动切换
-      - DIRECT
   - name: 🇭🇰 香港节点
     type: url-test
     use:
