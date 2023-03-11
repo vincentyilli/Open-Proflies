@@ -59,4 +59,3 @@ https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country-only-cn-private.m
 
  </details>
 
-[回到顶部](https://github.com/Repcz/Open-Proflies/wiki/Stash#%E5%AF%BC%E5%85%A5%E5%B9%B6%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE)
