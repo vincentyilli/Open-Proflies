@@ -2,11 +2,19 @@
 
 ### 1. 导入并修改配置
 * **设置** - **配置文件** - **从URL下载**
+
+**_完整配置_**（包含多种分流规则）
 ```
 https://ghproxy.com/https://github.com/Repcz/Open-Proflies/raw/main/Stash/Stash.yaml
 ```
-* 请自行替换 `subscribe-url` 和 `proxy-providers` 中的
-   `http://your-service-provider`
+
+
+**_简洁配置_**（仅支持国外分流）
+```
+https://ghproxy.com/https://raw.githubusercontent.com/Repcz/Open-Proflies/main/Stash/Stash_lite.yaml
+```
+
+* 请自行替换 `subscribe-url` 和 `proxy-providers` 中的`http://your-service-provider`
 ```
 # > 订阅的信息展示
 subscribe-url: http://your-service-provider
@@ -58,4 +66,5 @@ https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country-only-cn-private.m
 |800G不限时🚀|800G|￥40/一次性|
 
  </details>
+
 
