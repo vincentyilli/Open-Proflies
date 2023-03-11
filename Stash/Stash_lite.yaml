@@ -67,11 +67,19 @@ rule-providers:
     path: ./ruleset/apple.yaml
     interval: 86400
 
-  proxy:
+  Streaming:
     type: http
-    behavior: domain-text
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
-    path: ./ruleset/proxy.yaml
+    behavior: domain
+    url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml"
+    path: ./ruleset/Streaming.yaml
+    interval: 86400
+
+
+  Global:
+    type: http
+    behavior: domain
+    url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml"
+    path: ./ruleset/Global.yaml
     interval: 86400
 
   private:
@@ -79,13 +87,6 @@ rule-providers:
     behavior: domain-text
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
     path: ./ruleset/private.yaml
-    interval: 86400
-
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
-    path: ./ruleset/telegramcidr.yaml
     interval: 86400
 
   lancidr:
@@ -96,16 +97,16 @@ rule-providers:
     interval: 86400
 
 rules:
-  - DOMAIN,clash.razord.top,DIRECT
-  - DOMAIN,yacd.haishan.me,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,proxy,国外网站
-  - RULE-SET,lancidr,DIRECT
-  - RULE-SET,telegramcidr,国外网站
-  - GEOIP,CN,DIRECT,no-resolve
-  - MATCH,国外网站
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- RULE-SET,private,DIRECT
+- RULE-SET,icloud,DIRECT
+- RULE-SET,apple,DIRECT
+- RULE-SET,Streaming,国外网站
+- RULE-SET,Global,国外网站
+- RULE-SET,lancidr,DIRECT
+- GEOIP,CN,DIRECT,no-resolve
+- MATCH,国外网站
 
 script:
   shortcuts:
