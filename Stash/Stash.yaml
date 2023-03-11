@@ -209,17 +209,17 @@ proxy-groups:
   url: http://cp.cloudflare.com/generate_204
   
 rule-providers:
-  UnBan:
+  Direct:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
-    path: ./ruleset/UnBan.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml
+    path: ./ruleset/Direct.yaml
     interval: 86400
-  LocalAreaNetwork:
+  Lan:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
-    path: ./ruleset/LocalAreaNetwork.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
+    path: ./ruleset/Lan.yaml
     interval: 86400
   Ad:
     type: http
@@ -227,96 +227,82 @@ rule-providers:
     url: https://anti-ad.net/surge2.txt
     path: ./ruleset/surge2.txt
     interval: 86400
-  ProxyMedia:
+  GlobalMedia:
     type: http
-    behavior: classical
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml
-    path: ./ruleset/ProxyMedia.yaml
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Domain.txt
+    path: ./ruleset/GlobalMedia_Domain.yaml
     interval: 86400
   Apple:
     type: http
     behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Apple.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.txt
     path: ./ruleset/Apple.yaml
     interval: 86400
   Microsoft:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
     interval: 86400
-  OneDrive:
+  Github:
     type: http
     behavior: classical
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/OneDrive.yaml
-    path: ./ruleset/OneDrive.yaml
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
+    path: ./ruleset/Github.yaml
     interval: 86400
   Google:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
     path: ./ruleset/Google.yaml
     interval: 86400
   Telegram:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
     path: ./ruleset/Telegram.yaml
     interval: 86400
   BiliBili:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
     path: ./ruleset/BiliBili.yaml
     interval: 86400
-  Steam:
+  Game:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
-    path: ./ruleset/Steam.yaml
-    interval: 86400
-  Epic:
-    type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
-    path: ./ruleset/Epic.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
+    path: ./ruleset/Game.yaml
     interval: 86400
   ChinaIP:
     type: http
-    behavior: ipcidr
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml
+    behavior: ipcidr-text
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.txt
     path: ./ruleset/ChinaIP.yaml
-    interval: 86400
-  ChinaDomain:
-    type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaDomain.yaml
-    path: ./ruleset/ChinaDomain.yaml
     interval: 86400
   ProxyLite:
     type: http
-    behavior: domain
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
     path: ./ruleset/ProxyLite.yaml
     interval: 86400
 
 
 rules:
-  - RULE-SET,UnBan,DIRECT
-  - RULE-SET,LocalAreaNetwork,DIRECT
+  - RULE-SET,Direct,DIRECT
+  - RULE-SET,Lan,DIRECT
   - RULE-SET,Ad,Adblock
-  - RULE-SET,ProxyMedia,GlobeMeida
+  - RULE-SET,GlobalMedia,GlobeMeida
   - RULE-SET,Apple,Apple
   - RULE-SET,Microsoft,Microsoft
-  - RULE-SET,OneDrive,Microsoft
+  - RULE-SET,Github,Microsoft
   - RULE-SET,Google,Googel
   - RULE-SET,Telegram,Telegram
   - RULE-SET,BiliBili,BiliBili
-  - RULE-SET,Steam,Game
-  - RULE-SET,Epic,Game
+  - RULE-SET,Game,Game
   - RULE-SET,ProxyLite,Globe
   - RULE-SET,ChinaIP,DIRECT
-  - RULE-SET,ChinaDomain,DIRECT
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH,Final
 
