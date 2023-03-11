@@ -51,17 +51,23 @@ proxy-groups:
       - All
     url: http://www.gstatic.com/generate_204
     interval: 300
+  - name: 🚀 手动选择
+    type: select
+    use:
+      - All
+    url: http://www.gstatic.com/generate_204
+    interval: 300
   - name: 🌏 国外网站
     type: select
     proxies:
       - ✈️ 自动选择
-      - All
+      - 🚀 手动选择
       - DIRECT
   - name: 📟 Telegram
     type: select
     proxies:
       - ✈️ 自动选择
-      - All
+      - 🚀 手动选择
       - DIRECT
   - name: 🌏 国内网站
     type: select
@@ -70,8 +76,7 @@ proxy-groups:
   - name: 🆎 AdBlock
     type: select
     proxies:
-      - REJECT
- 
+      - REJECT 
 
 rule-providers:
   Ad:
