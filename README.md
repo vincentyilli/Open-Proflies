@@ -1,3 +1,6 @@
+[使用教程](https://github.com/Repcz/Open-Proflies/wiki)
+---
+
 机场推荐
 ---
 > 根据自身网络环境选择，建议月付或季付
