@@ -229,13 +229,13 @@ rule-providers:
     interval: 86400
   GlobalMedia:
     type: http
-    behavior: domain
+    behavior: domain-text
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Domain.txt
     path: ./ruleset/GlobalMedia_Domain.yaml
     interval: 86400
   Apple:
     type: http
-    behavior: domain
+    behavior: domain-text
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Domain.txt
     path: ./ruleset/Apple.yaml
     interval: 86400
