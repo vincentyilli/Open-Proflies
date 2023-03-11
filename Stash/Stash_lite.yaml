@@ -45,20 +45,11 @@ proxy-groups:
   include-all: true
   interval: 120
   lazy: true
-  name: Select
+  name: 国外网站
   proxies: []
   type: select
   url: http://cp.cloudflare.com/generate_204
   
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Auto_Speed.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: Proxy
-  proxies: []
-  type: select
-  url: http://cp.cloudflare.com/generate_204
-
 - icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.png
   name: Adblock
   proxies:
@@ -134,16 +125,16 @@ rules:
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
-  - RULE-SET,reject,Adblock
+  - RULE-SET,reject,广告拦截
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
-  - RULE-SET,proxy,Proxy
+  - RULE-SET,proxy,国外网站
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
-  - RULE-SET,telegramcidr,Proxy
+  - RULE-SET,telegramcidr,国外网站
   - GEOIP,CN,DIRECT,no-resolve
-  - MATCH,Globe
+  - MATCH,国外网站
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
