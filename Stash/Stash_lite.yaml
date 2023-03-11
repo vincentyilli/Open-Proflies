@@ -41,7 +41,7 @@ proxy-providers:
     interval: 600
 
 proxy-groups:
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png
+- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
   include-all: true
   interval: 120
   lazy: true
@@ -50,20 +50,8 @@ proxy-groups:
   type: select
   url: http://cp.cloudflare.com/generate_204
   
-- icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Reject.png
-  name: Adblock
-  proxies:
-  - REJECT
-  - DIRECT
-  type: select
   
 rule-providers:
-  reject:
-    type: http
-    behavior: domain
-    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt
-    path: ./ruleset/reject.yaml
-    interval: 86400
 
   icloud:
     type: http
@@ -125,7 +113,6 @@ rules:
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
-  - RULE-SET,reject,广告拦截
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,proxy,国外网站
