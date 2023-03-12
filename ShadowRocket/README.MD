@@ -36,7 +36,7 @@ https://ghproxy.com/https://raw.githubusercontent.com/Repcz/Open-Proflies/main/S
 ![检查url](https://github.com/Repcz/Open-Proflies/blob/main/ShadowRocket/Photo/3.jpg)
 
 ### 4. 添加**GeoLite2**订阅
-> 项目地址：[geoip](https://github.com/Loyalsoldier/geoip)
+> 项目地址：[Loyalsoldier/geoip](https://github.com/Loyalsoldier/geoip)
 * 点击底部工具栏 **设置** ，点击下方 **Geolite2数据库**
 * 在 **国家** 模块中的URL填入以下地址 ，并更新
 ```
