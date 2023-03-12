@@ -154,12 +154,12 @@ rules:
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,🌏 国内网站
   - RULE-SET,Ad,🆎 AdBlock
+  - RULE-SET,telegramcidr,📟 Telegram
   - RULE-SET,icloud,🌏 国内网站
   - RULE-SET,apple,🌏 国内网站
   - RULE-SET,proxy,🌏 国外网站
   - RULE-SET,direct,🌏 国内网站
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,🌏 国内网站
-  - RULE-SET,telegramcidr,📟 Telegram
   - GEOIP,CN,🌏 国内网站,no-resolve
   - MATCH,🌏 国外网站
