@@ -98,7 +98,7 @@ rules:
 - RULE-SET,Streaming,国外网站
 - RULE-SET,Global,国外网站
 - RULE-SET,lancidr,DIRECT
-- GEOIP,CN,DIRECT,no-resolve
+- GEOIP,CN,DIRECT
 - MATCH,国外网站
 
 script:
