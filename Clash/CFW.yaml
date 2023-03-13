@@ -61,7 +61,6 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
-#香港节点     
   HK:
     type: file
     path: ./all.yaml
@@ -70,7 +69,6 @@ proxy-providers:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
- #日本节点
   JP:
     type: file
     path: ./all.yaml
@@ -79,7 +77,6 @@ proxy-providers:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
- #美国节点
   US:
     type: file
     path: ./all.yaml
@@ -88,7 +85,6 @@ proxy-providers:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
- #台湾节点
   TW:
     type: file
     path: ./all.yaml
@@ -97,7 +93,6 @@ proxy-providers:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
-  #新加坡节点
   SG:
     type: file
     path: ./all.yaml
@@ -107,7 +102,6 @@ proxy-providers:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
-  #英国节点
   UK:
     type: file
     path: ./all.yaml
@@ -117,12 +111,20 @@ proxy-providers:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
-  #澳洲节点
   AU:
     type: file
     path: ./all.yaml
     interval: 3600
     filter: 澳|AU|(?i)Austria
+    health-check:
+      enable: true
+      interval: 120
+      url: http://www.gstatic.com/generate_204
+  IN:
+    type: file
+    path: ./all.yaml
+    interval: 3600
+    filter: 印度|印|IN|India
     health-check:
       enable: true
       interval: 120
@@ -134,13 +136,8 @@ proxy-groups:
     use:
       - All
     proxies:
-      - ✈️ 自动选择
-  - name: ✈️ 自动选择
-    type: url-test
-    use:
-      - All
-    url: http://www.gstatic.com/generate_204
-    interval: 300
+      - REJECT
+      - DIRECT
   - name: 🌏 国外网站
     type: select
     proxies:
@@ -148,9 +145,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🎬 国际媒体
@@ -160,9 +158,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🍎 苹果服务
@@ -173,9 +172,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
   - name: 🧩 微软服务
     type: select
@@ -184,9 +184,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🌌 谷歌服务
@@ -196,9 +197,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 📟 电报消息
@@ -208,9 +210,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🐦 推特服务
@@ -220,9 +223,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🎮 游戏平台
@@ -232,9 +236,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🎬 哔哩哔哩
@@ -248,19 +253,10 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
-      - 🚀 手动切换
   - name: 🆎 AdBlock
     type: select
     proxies:
       - REJECT
-      - 🚀 手动切换
   - name: 🐟 漏网之鱼
     type: select
     proxies:
@@ -268,9 +264,10 @@ proxy-groups:
       - 🇯🇵 日本节点
       - 🇺🇲 美国节点
       - 🇨🇳 台湾节点
-      - 🇸🇬  新加坡节点
-      - 🇬🇧   英国节点
-      - 🇦🇺   澳洲节点
+      - 🇸🇬 狮城节点
+      - 🇬🇧 英国节点
+      - 🇦🇺 澳洲节点
+      - 🇮🇳 印度节点
       - 🚀 手动切换
       - DIRECT
   - name: 🇭🇰 香港节点
@@ -305,7 +302,7 @@ proxy-groups:
     interval: 300
     proxies:
       - REJECT
-  - name: 🇸🇬  新加坡节点
+  - name: 🇸🇬 狮城节点
     type: url-test
     use:
       - SG
@@ -313,7 +310,7 @@ proxy-groups:
     interval: 300
     proxies:
       - REJECT
-  - name: 🇬🇧   英国节点
+  - name: 🇬🇧 英国节点
     type: url-test
     use:
       - UK
@@ -321,7 +318,7 @@ proxy-groups:
     interval: 600
     proxies:
       - REJECT
-  - name: 🇦🇺   澳洲节点
+  - name: 🇦🇺 澳洲节点
     type: url-test
     use:
       - AU
@@ -329,8 +326,14 @@ proxy-groups:
     interval: 600
     proxies:
       - REJECT
-
-
+  - name: 🇮🇳 印度节点
+    type: url-test
+    use:
+      - IN
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+    proxies:
+      - REJECT
 rule-providers:
   Direct:
     type: http
@@ -425,7 +428,7 @@ rule-providers:
 rules:
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Lan,DIRECT
-  - RULE-SET,Download,DIRECT  
+  - RULE-SET,Download,DIRECT
   - RULE-SET,Ad,🆎 AdBlock
   - RULE-SET,GlobalMedia,🎬 国际媒体
   - RULE-SET,Apple,🍎 苹果服务
