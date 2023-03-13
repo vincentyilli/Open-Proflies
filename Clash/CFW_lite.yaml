@@ -81,7 +81,7 @@ proxy-groups:
       - ✈️ 自动选择
       - 🚀 手动选择
       - DIRECT
-  - name: 📟 Telegram
+  - name: 📟 电报消息
     type: select
     proxies:
       - ✈️ 自动选择
@@ -91,7 +91,7 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-  - name: 🆎 AdBlock
+  - name: 🆎 广告拦截
     type: select
     proxies:
       - REJECT 
@@ -171,8 +171,8 @@ rules:
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,🌏 国内网站
-  - RULE-SET,Ad,🆎 AdBlock
-  - RULE-SET,telegramcidr,📟 Telegram
+  - RULE-SET,Ad,🆎 广告拦截
+  - RULE-SET,telegramcidr,📟 电报消息
   - RULE-SET,icloud,🌏 国内网站
   - RULE-SET,apple,🌏 国内网站
   - RULE-SET,proxy,🌏 国外网站
