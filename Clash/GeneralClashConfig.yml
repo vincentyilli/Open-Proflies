@@ -47,6 +47,5 @@ dns:
      ipcidr:
        - 240.0.0.0/4
        
-cfw-latency-timeout: 3000
-cfw-latency-url: http://www.gstatic.com/generate_204
+
 
