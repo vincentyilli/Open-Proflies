@@ -201,7 +201,7 @@ proxy-groups:
       - 🇦🇺   澳洲节点
       - 🚀 手动切换
       - DIRECT
-  - name: 📟 Telegram
+  - name: 📟 电报消息
     type: select
     proxies:
       - 🇭🇰 香港节点
@@ -213,7 +213,19 @@ proxy-groups:
       - 🇦🇺   澳洲节点
       - 🚀 手动切换
       - DIRECT
-  - name: 🎮 游戏平台
+  - name: 🐦 推特服务
+    type: select
+    proxies:
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇨🇳 台湾节点
+      - 🇸🇬  新加坡节点
+      - 🇬🇧   英国节点
+      - 🇦🇺   澳洲节点
+      - 🚀 手动切换
+      - DIRECT
+- name: 🎮 游戏平台
     type: select
     proxies:
       - 🇭🇰 香港节点
@@ -380,6 +392,12 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
     path: ./ruleset/Telegram.yaml
     interval: 86400
+  Twitter:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml
+    path: ./ruleset/Twitter.yaml
+    interval: 86400
   BiliBili:
     type: http
     behavior: classical
@@ -414,7 +432,8 @@ rules:
   - RULE-SET,Microsoft,🧩 微软服务
   - RULE-SET,Github,🧩 微软服务
   - RULE-SET,Google,🌌 谷歌服务
-  - RULE-SET,Telegram,📟 Telegram
+  - RULE-SET,Telegram,📟 电报消息
+  - RULE-SET,Twitter,🐦 推特服务
   - RULE-SET,BiliBili,🎬 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
   - RULE-SET,ProxyLite,🌏 国外网站
