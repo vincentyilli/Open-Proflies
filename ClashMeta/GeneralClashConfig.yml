@@ -1,0 +1,111 @@
+# 源配置：https://github.com/JohnsonRan/CRules/blob/master/config/GeneralClashConfig.yml
+# 示例配置：https://docs.metacubex.one/example/ex1
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+geodata-mode: true
+tcp-concurrent: true
+allow-lan: true
+bind-address: "*"
+ipv6: ture
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  force-domain:
+  - "+.netflix.com"
+  - "+.nflxvideo.net"
+  - "+.amazonaws.com"
+  - "+.media.dssott.com"
+  - 'google.com'
+  skip-domain:
+  - "+.apple.com"
+  - Mijia Cloud
+  - "+.jd.com"
+  sniff:
+    TLS:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+dns:
+  enable: true
+  ipv6: ture
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - 'cable.auth.com'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - 'network-test.debian.org'
+    - 'detectportal.firefox.com'
+    - 'resolver1.opendns.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+    - 'stun.*'
+    - 'global.turn.twilio.com'
+    - 'global.stun.twilio.com'
+    - 'localhost.*.qq.com'
+    - '+.logon.battlenet.com.cn'
+    - '+.logon.battle.net'
+    - '+.blzstatic.cn'
+    - '+.cmpassport.com'
+    - 'id6.me'
+    - 'open.e.189.cn'
+    - 'mdn.open.wo.cn'
+    - 'opencloud.wostore.cn'
+    - 'auth.wosms.cn'
+    - '+.jegotrip.com.cn'
+    - '+.icitymobile.mobi'
+    - '+.pingan.com.cn'
+    - '+.cmbchina.com'
+    - '+.cmbchina.com.cn'
+    - '+?miwifi.com'
+    - 'pool.ntp.org'
+    - '+.pool.ntp.org'
+    - 'ntp.*.com'
+    - 'time.*.com'
+    - 'ntp?.*.com'
+    - 'time?.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - '+.ntp.org.cn'
+    - 'time.*.apple.com'
+    - 'PDC._msDCS.*.*'
+    - 'DC._msDCS.*.*'
+    - 'GC._msDCS.*.*'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - '!CN'
+    ipcidr: 
+      - 240.0.0.0/4
+    domain: 
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+  nameserver:
+    - https://223.5.5.5/dns-query
+    - https://223.6.6.6/dns-query
+  fallback:
+     - https://1.0.0.1/dns-query
+     - https://dns.google/dns-query
+  proxy-server-nameserver:
+    - 223.5.5.5
+experimental:
+  ignore-resolve-fail: true
