@@ -498,7 +498,7 @@ rules:
   - RULE-SET,Github,🧩 微软服务
   - GEOIP,google,🌌 谷歌服务,no-reslove
   - RULE-SET,Google,🌌 谷歌服务
-  - GEOIP,telegream,📟 电报消息,no-reslove
+  - GEOIP,telegram,📟 电报消息,no-reslove
   - RULE-SET,Telegram,📟 电报消息
   - GEOIP,twitter,🐦 推特服务,no-reslove
   - RULE-SET,Twitter,🐦 推特服务
