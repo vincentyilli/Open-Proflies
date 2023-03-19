@@ -35,6 +35,8 @@ dns:
     - 119.29.29.29
     - 114.114.114.114
   fallback:
+    - 8.8.8.8
+    - 1.1.1.1
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
     - https://dns.alidns.com/dns-query
