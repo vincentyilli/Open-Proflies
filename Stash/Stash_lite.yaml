@@ -39,6 +39,7 @@ dns:
     - https://dns.alidns.com/dns-query
   fallback-filter:
      geoip: true
+     geoip-code: CN
      ipcidr:
        - 240.0.0.0/4
 
