@@ -43,11 +43,8 @@ dns:
      ipcidr:
        - 240.0.0.0/4
 
-
-
-
 proxy-providers:
-  All:
+  All: &all # 建立锚点
     type: http
     url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
@@ -60,7 +57,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   HK:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 港|HK|(?i)Hong
     health-check:
       enable: true
@@ -68,7 +65,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   JP:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 日|东京|JP|(?i)Japan
     health-check:
       enable: true
@@ -76,7 +73,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   US:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 美|US|(?i)States|American
     health-check:
       enable: true
@@ -84,14 +81,16 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   SG:
     type: file
-    path: ./all.yaml
+    <<: *all
     interval: 3600
     filter: 新|坡|SG|(?i)Singapore
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+
 proxies: null
+
 proxy-groups:
   - name: 🚀 手动切换
     type: select
@@ -227,6 +226,7 @@ proxy-groups:
     interval: 300
     proxies:
       - REJECT
+
 rule-providers:
   Direct:
     type: http
@@ -318,6 +318,7 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
     path: ./ruleset/ProxyLite.yaml
     interval: 86400
+
 rules:
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Lan,DIRECT
