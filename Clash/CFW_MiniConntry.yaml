@@ -1,4 +1,3 @@
-# 源配置地址：https://github.com/ACL4SSR/ACL4SSR/blob/master/Clash/GeneralClashConfig.yml
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -310,7 +309,7 @@ rule-providers:
   ChinaIP:
     type: http
     behavior: ipcidr
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
+    url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml
     path: ./ruleset/ChinaIP.yaml
     interval: 86400
   ProxyLite:
