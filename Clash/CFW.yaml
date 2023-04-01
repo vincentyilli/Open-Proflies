@@ -57,6 +57,7 @@ proxy-providers:
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
     # 也可以使用在线订阅转换，在进阶模式中勾选`输出为Node List`，将Clash订阅链接转换为只包含节点信息的配置，并替换掉整个引号""内的链接
     interval: 3600
+    path: ./all.yaml
     health-check:
       enable: true
       interval: 600
