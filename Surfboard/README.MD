@@ -1,1 +1,1 @@
-[使用方法](https://github.com/Repcz/Open-Proflies/wiki/Surfbaord)
+[使用方法](https://github.com/Repcz/Open-Proflies/wiki/Surfboard)
