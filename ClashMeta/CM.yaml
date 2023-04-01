@@ -1,3 +1,10 @@
+# Author:https://github.com/Repcz
+#
+# 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
+#
+# 最后更新时间: 2023/4/1
+#
+# ================
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -33,6 +40,10 @@ sniffer:
       - 80
       - 8080-8880
       override-destination: true
+geox-url：
+  geoip:"https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite:"https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  mmdb:"https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
 dns:
   enable: true
   ipv6: false
