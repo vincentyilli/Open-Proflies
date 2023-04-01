@@ -1,5 +1,11 @@
-# 源配置：https://github.com/JohnsonRan/CRules/blob/master/config/GeneralClashConfig.yml
-# 示例配置：https://docs.metacubex.one/example/ex1
+# 修改至：https://github.com/JohnsonRan/CRules/blob/master/config/GeneralClashConfig.yml
+# Author：https://github.com/Repcz
+#
+# 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
+#
+# 最后更新时间: 2023/4/1
+#
+# ================
 port: 7890
 socks-port: 7891
 redir-port: 7892
