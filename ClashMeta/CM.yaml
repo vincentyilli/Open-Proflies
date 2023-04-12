@@ -465,17 +465,17 @@ rules:
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Lan,DIRECT
   - RULE-SET,Download,DIRECT
-  - GEOSITE,category-ads-all,🆎 AdBlock
+ ; - GEOSITE,category-ads-all,🆎 AdBlock
   - RULE-SET,Ad,🆎 AdBlock
   - RULE-SET,GlobalMedia,🎬 国际媒体
   - RULE-SET,Apple,🍎 苹果服务
   - RULE-SET,Microsoft,🧩 微软服务
   - RULE-SET,Github,🧩 微软服务
-  - GEOIP,google,🌌 谷歌服务,no-reslove
+ ; - GEOIP,google,🌌 谷歌服务,no-reslove
   - RULE-SET,Google,🌌 谷歌服务
-  - GEOIP,telegram,📟 电报消息,no-reslove
+ ; - GEOIP,telegram,📟 电报消息,no-reslove
   - RULE-SET,Telegram,📟 电报消息
-  - GEOIP,twitter,🐦 推特服务,no-reslove
+ ; - GEOIP,twitter,🐦 推特服务,no-reslove
   - RULE-SET,Twitter,🐦 推特服务
   - RULE-SET,BiliBili,🎬 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
