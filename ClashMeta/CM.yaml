@@ -321,53 +321,69 @@ proxy-groups:
       - 🚀 手动切换
       - DIRECT
   - name: 🇭🇰 香港节点
-    type: select
+    type: url-test
     use:
       - HK
     url: http://www.gstatic.com/generate_204
     interval: 300
+    proxies:
+      - REJECT
   - name: 🇯🇵 日本节点
-    type: select
+    type: url-test
     use:
       - JP
     url: http://www.gstatic.com/generate_204
     interval: 300
+    proxies:
+      - REJECT
   - name: 🇨🇳 台湾节点
-    type: select
+    type: url-test
     use:
       - TW
     url: http://www.gstatic.com/generate_204
     interval: 300
+    proxies:
+      - REJECT
   - name: 🇺🇲 美国节点
-    type: select
+    type: url-test
     use:
       - US
     url: http://www.gstatic.com/generate_204
     interval: 300
+    proxies:
+      - REJECT
   - name: 🇸🇬 狮城节点
-    type: select
+    type: url-test
     use:
       - SG
     url: http://www.gstatic.com/generate_204
     interval: 300
+    proxies:
+      - REJECT
   - name: 🇬🇧 英国节点
-    type: select
+    type: url-test
     use:
       - UK
     url: http://www.gstatic.com/generate_204
     interval: 600
+    proxies:
+      - REJECT
   - name: 🇦🇺 澳洲节点
-    type: select
+    type: url-test
     use:
       - AU
     url: http://www.gstatic.com/generate_204
     interval: 600
+    proxies:
+      - REJECT
   - name: 🇮🇳 印度节点
-    type: select
+    type: url-test
     use:
       - IN
     url: http://www.gstatic.com/generate_204
     interval: 600
+    proxies:
+      - REJECT
 rule-providers:
   Direct:
     type: http
