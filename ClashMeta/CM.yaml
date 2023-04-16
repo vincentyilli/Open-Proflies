@@ -17,13 +17,16 @@ ipv6: false
 mode: rule
 log-level: info
 external-controller: 0.0.0.0:9090
+
 geox-url:
   geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
   geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
   mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+  
 profile:
   store-selected: true
   store-fake-ip: true
+  
 sniffer:
   enable: true
   parse-pure-ip: true
@@ -39,12 +42,19 @@ sniffer:
   - "+.jd.com"
   sniff:
     TLS:
+      ports: [443, 8443]
     HTTP:
-      ports:
-      - 80
-      - 8080-8880
+      ports: [80, 8080-8880]
       override-destination: true
       
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 'any:53'
+  auto-route: true
+  auto-detect-interface: true
+        
 dns:
   enable: true
   ipv6: false
@@ -86,11 +96,9 @@ dns:
     - 223.5.5.5
 experimental:
   ignore-resolve-fail: true
-  
-  
-  
+
 proxy-providers:
-  All:
+  All: &all # 建立锚点
     type: http
     url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
@@ -103,7 +111,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   HK:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 港|HK|(?i)Hong
     health-check:
       enable: true
@@ -111,7 +119,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   JP:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 日|东京|JP|(?i)Japan
     health-check:
       enable: true
@@ -119,7 +127,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   US:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 美|US|(?i)States|American
     health-check:
       enable: true
@@ -127,7 +135,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   TW:
     type: file
-    path: ./all.yaml
+    <<: *all
     filter: 台|湾|TW|(?i)Taiwan
     health-check:
       enable: true
@@ -135,7 +143,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   SG:
     type: file
-    path: ./all.yaml
+    <<: *all
     interval: 3600
     filter: 新|坡|SG|(?i)Singapore
     health-check:
@@ -144,7 +152,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   UK:
     type: file
-    path: ./all.yaml
+    <<: *all
     interval: 3600
     filter: 英|UK|(?i)Kingdom
     health-check:
@@ -153,7 +161,7 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   AU:
     type: file
-    path: ./all.yaml
+    <<: *all
     interval: 3600
     filter: 澳|AU|(?i)Austria
     health-check:
@@ -162,14 +170,16 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
   IN:
     type: file
-    path: ./all.yaml
+    <<: *all
     interval: 3600
     filter: 印度|印|IN|India
     health-check:
       enable: true
       interval: 120
       url: http://www.gstatic.com/generate_204
+
 proxies: null
+
 proxy-groups:
   - name: 🚀 手动切换
     type: select
@@ -469,17 +479,17 @@ rules:
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Lan,DIRECT
   - RULE-SET,Download,DIRECT
- ; - GEOSITE,category-ads-all,🆎 AdBlock
+ # - GEOSITE,category-ads-all,🆎 AdBlock
   - RULE-SET,Ad,🆎 AdBlock
   - RULE-SET,GlobalMedia,🎬 国际媒体
   - RULE-SET,Apple,🍎 苹果服务
   - RULE-SET,Microsoft,🧩 微软服务
   - RULE-SET,Github,🧩 微软服务
- ; - GEOIP,google,🌌 谷歌服务,no-reslove
+ # - GEOIP,google,🌌 谷歌服务,no-reslove
   - RULE-SET,Google,🌌 谷歌服务
- ; - GEOIP,telegram,📟 电报消息,no-reslove
+ # - GEOIP,telegram,📟 电报消息,no-reslove
   - RULE-SET,Telegram,📟 电报消息
- ; - GEOIP,twitter,🐦 推特服务,no-reslove
+ # - GEOIP,twitter,🐦 推特服务,no-reslove
   - RULE-SET,Twitter,🐦 推特服务
   - RULE-SET,BiliBili,🎬 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
