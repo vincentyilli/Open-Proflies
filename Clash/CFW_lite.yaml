@@ -68,14 +68,12 @@ proxies: null
 proxy-groups:
   - name: 🌏 国外网站
     type: select
-    proxies:
+    use:
       - All
-      - DIRECT
   - name: 📟 电报消息
     type: select
-    proxies:
+    use:
       - All
-      - DIRECT
   - name: 🌏 国内网站
     type: select
     proxies:
@@ -84,6 +82,7 @@ proxy-groups:
     type: select
     proxies:
       - REJECT 
+      - DIRECT
 
 rule-providers:
   Ad:
