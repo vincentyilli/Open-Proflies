@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/1
+# 最后更新时间: 2023/4/16
 #
 # ================
 port: 7890
@@ -66,29 +66,15 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
 proxies: null
 proxy-groups:
-  - name: ✈️ 自动选择
-    type: url-test
-    use:
-      - All
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-  - name: 🚀 手动选择
-    type: select
-    use:
-      - All
-    url: http://www.gstatic.com/generate_204
-    interval: 300
   - name: 🌏 国外网站
     type: select
     proxies:
-      - ✈️ 自动选择
-      - 🚀 手动选择
+      - All
       - DIRECT
   - name: 📟 电报消息
     type: select
     proxies:
-      - ✈️ 自动选择
-      - 🚀 手动选择
+      - All
       - DIRECT
   - name: 🌏 国内网站
     type: select
