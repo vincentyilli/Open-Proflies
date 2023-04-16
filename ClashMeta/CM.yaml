@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/1
+# 最后更新时间: 2023/4/16
 #
 # ================
 port: 7890
@@ -17,6 +17,10 @@ ipv6: false
 mode: rule
 log-level: info
 external-controller: 0.0.0.0:9090
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
 profile:
   store-selected: true
   store-fake-ip: true
