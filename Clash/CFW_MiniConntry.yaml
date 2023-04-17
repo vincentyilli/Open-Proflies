@@ -92,7 +92,7 @@ proxy-groups:
 
  - {name: 🎮 游戏平台, <<: *pr}
   
- - {name: 🎬 哔哩哔哩, type: select, proxies: [DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点]}
+ - {name: 🎬 哔哩哔哩, type: select, proxies: [DIRECT, 🇭🇰 香港节点]}
 
  - {name: 🌏 国内网站, type: select, proxies: [DIRECT, 🚀 手动切换]}
   
