@@ -10,88 +10,46 @@ port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
-geodata-mode: true
-tcp-concurrent: true
 allow-lan: true
-bind-address: "*"
-ipv6: false
+bind-address: '*'
 mode: rule
 log-level: info
-external-controller: 0.0.0.0:9090
-  
-profile:
-  store-selected: true
-  store-fake-ip: true
-  
-sniffer:
-  enable: true
-  parse-pure-ip: true
-  force-domain:
-  - "+.netflix.com"
-  - "+.nflxvideo.net"
-  - "+.amazonaws.com"
-  - "+.media.dssott.com"
-  - 'google.com'
-  skip-domain:
-  - "+.apple.com"
-  - Mijia Cloud
-  - "+.jd.com"
-  sniff:
-    TLS:
-      ports: [443, 8443]
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-      
-tun:
-  enable: true
-  stack: system
-  dns-hijack:
-    - 'any:53'
-  auto-route: true
-  auto-detect-interface: true
-        
+ipv6: false
+external-controller: 127.0.0.1:9090
+
 dns:
-  enable: true
+  enable: true 
   ipv6: false
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip  
+  fake-ip-range: 198.18.0.1/16 
   fake-ip-filter:
-     - '*.lan'
-     - localhost.ptlogin2.qq.com
-     - '+.srv.nintendo.net'
-     - '+.stun.playstation.net'
-     - '+.msftconnecttest.com'
-     - '+.msftncsi.com'
-     - '+.xboxlive.com'
-     - 'msftconnecttest.com'
-     - 'xbox.*.microsoft.com'
-     - '*.battlenet.com.cn'
-     - '*.battlenet.com'
-     - '*.blzstatic.cn'
-     - '*.battle.net'
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - '!CN'
-    ipcidr: 
-      - 240.0.0.0/4
-    domain: 
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
   nameserver:
-     - 223.5.5.5
-     - 119.29.29.29
-     - 114.114.114.114
-  fallback:
-     - https://cloudflare-dns.com/dns-query
-     - https://dns.google/dns-query
-  proxy-server-nameserver:
     - 223.5.5.5
-experimental:
-  ignore-resolve-fail: true
+    - 119.29.29.29
+    - 114.114.114.114
+  fallback:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback-filter:
+     geoip: true
+     geoip-code: CN
+     ipcidr:
+       - 240.0.0.0/4
     
 # proxy引用相关
 pr: &pr {type: select, proxies: [🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, DIRECT]}
@@ -116,13 +74,13 @@ proxies: null
 
 proxy-groups:
 
- #分流
+ #分流分组
 
  - {name: 🌏 国外网站, <<: *pr}
 
  - {name: 🎬 国际媒体, <<: *pr}
 
- - {name: 🍎 苹果服务, type: select, proxies: [DIRECT, 🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点]}
+ - {name: 🍎 苹果服务, type: select, proxies: [DIRECT, 🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点]}
 
  - {name: 🧩 微软服务, <<: *pr}
 
@@ -154,8 +112,16 @@ proxy-groups:
 
  - {name: 🇺🇲 美国节点, <<: *use, filter: "美|US|(?i)States|American"}
 
+ - {name: 🇨🇳 台湾节点, <<: *use, filter: "台|湾|TW|(?i)Taiwan"}
+
  - {name: 🇸🇬 狮城节点, <<: *use, filter: "新|坡|SG|(?i)Singapore"}
   
+ - {name: 🇬🇧 英国节点, <<: *use, filter: "英|UK|(?i)Kingdom"}
+  
+ - {name: 🇦🇺 澳洲节点, <<: *use, filter: "澳|AU|(?i)Austria"}
+ 
+ - {name: 🇮🇳 印度节点, <<: *use, filter: "印度|印|IN|India"}
+
 rule-providers:
   Direct:
     type: http
