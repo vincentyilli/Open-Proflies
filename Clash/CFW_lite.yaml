@@ -2,9 +2,10 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/16
+# 最后更新时间: 2023/4/17
 #
 # ================
+
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -13,12 +14,12 @@ allow-lan: true
 bind-address: '*'
 mode: rule
 log-level: info
-ipv6: true
+ipv6: false
 external-controller: 127.0.0.1:9090
 
 dns:
   enable: true 
-  ipv6: true
+  ipv6: false
   listen: 0.0.0.0:53
   enhanced-mode: fake-ip  
   fake-ip-range: 198.18.0.1/16 
@@ -49,41 +50,37 @@ dns:
      geoip-code: CN
      ipcidr:
        - 240.0.0.0/4
+    
+# 订阅更新和延迟测试相关
+p: &p {type: http, interval: 21600, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
 
+# 自动选择相关
+auto: &auto {type: url-test, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
 
+# 手动选择相关
+use: &use {type: select, use: [Subscribe]}
 
 proxy-providers:
-  All:
-    type: http
+  Subscribe:
+    <<: *p
     url: "https://api.v1.mk/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
     # 也可以使用在线订阅转换，在进阶模式中勾选`输出为Node List`，将Clash订阅链接转换为只包含节点信息的配置，并替换掉整个引号""内的链接
-    interval: 3600
     path: ./all.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
+          
 proxies: null
-proxy-groups:
-  - name: 🌏 国外网站
-    type: select
-    use:
-      - All
-  - name: 📟 电报消息
-    type: select
-    use:
-      - All
-  - name: 🌏 国内网站
-    type: select
-    proxies:
-      - DIRECT
-  - name: 🆎 广告拦截
-    type: select
-    proxies:
-      - REJECT 
-      - DIRECT
 
+proxy-groups:
+
+ - {name: 🌏 国外网站, <<: *use}
+ 
+ - {name: 📟 电报消息, <<: *use}
+ 
+ - {name: 🌏 国内网站, type: select, proxies: [DIRECT]}
+ 
+ - {name: 🆎 广告拦截, type: select, proxies: [REJECT, DIRECT]}
+ 
+ 
 rule-providers:
   Ad:
     type: http
@@ -154,6 +151,7 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
     path: ./ruleset/applications.yaml
     interval: 86400
+    
 rules:
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
