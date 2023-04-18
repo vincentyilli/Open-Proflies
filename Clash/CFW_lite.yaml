@@ -50,15 +50,28 @@ dns:
      geoip-code: CN
      ipcidr:
        - 240.0.0.0/4
-    
+ 
+###建立锚点
+ 
 # 订阅更新和延迟测试相关
-p: &p {type: http, interval: 21600, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
 
 # 自动选择相关
-auto: &auto {type: url-test, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+auto: &auto {type: url-test, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
 
 # 手动选择相关
 use: &use {type: select, use: [Subscribe]}
+
+# classical规则相关
+c: &c {type: http, behavior: classical, interval: 86400}
+
+# domain规则相关
+d: &d {type: http, behavior: domain, interval: 86400}
+
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, interval: 86400}
+
+###结束
 
 proxy-providers:
   Subscribe:
@@ -81,75 +94,55 @@ proxy-groups:
  
  
 rule-providers:
-  Ad:
-    type: http
-    behavior: domain
+  Ad: # 广告
+    <<: *d
     url: https://anti-ad.net/clash.yaml
     path: ./ruleset/anti-ad-clash.yaml
-    interval: 86400
 
-  icloud:
-    type: http
-    behavior: domain
+  icloud: # 苹果
+    <<: *d
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
     path: ./ruleset/icloud.yaml
-    interval: 86400
 
-  apple:
-    type: http
-    behavior: domain
+  apple: # 苹果
+    <<: *d
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
     path: ./ruleset/apple.yaml
-    interval: 86400
 
-  proxy:
-    type: http
-    behavior: domain
+  proxy: # 代理网站
+    <<: *d
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
     path: ./ruleset/proxy.yaml
-    interval: 86400
 
-  direct:
-    type: http
-    behavior: domain
+  direct: # 直连网站
+    <<: *d
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
     path: ./ruleset/direct.yaml
-    interval: 86400
 
-  private:
-    type: http
-    behavior: domain
+  private: # 私人域名
+    <<: *d
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
     path: ./ruleset/private.yaml
-    interval: 86400
 
-  telegramcidr:
-    type: http
-    behavior: ipcidr
+  telegramcidr: # 电报
+    <<: *i
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
     path: ./ruleset/telegramcidr.yaml
-    interval: 86400
 
-  cncidr:
-    type: http
-    behavior: ipcidr
+  cncidr: # 中国大陆IP
+    <<: *i
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
     path: ./ruleset/cncidr.yaml
-    interval: 86400
 
-  lancidr:
-    type: http
-    behavior: ipcidr
+  lancidr: # 局域网
+    <<: *i
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
     path: ./ruleset/lancidr.yaml
-    interval: 86400
 
-  applications:
-    type: http
-    behavior: classical
+  applications: # 应用
+    <<: *c
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
     path: ./ruleset/applications.yaml
-    interval: 86400
     
 rules:
   - RULE-SET,applications,DIRECT
