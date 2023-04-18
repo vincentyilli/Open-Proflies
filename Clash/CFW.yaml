@@ -136,58 +136,72 @@ proxy-groups:
  - {name: 🇮🇳 印度节点, <<: *auto, filter: "印度|印|IN|India"}
 
 rule-providers:
+
   Direct: # 规则修正
     <<: *d
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml
     path: ./ruleset/Direct.yaml
+    
   Lan: # 局域网
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml
     path: ./ruleset/Lan.yaml
+    
   Download: # 下载服务
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.yaml
     path: ./ruleset/Download.yaml
+    
   Ad: # 广告
     <<: *d
     url: https://anti-ad.net/clash.yaml
     path: ./ruleset/anti-ad-clash.yaml
+    
   GlobalMedia: # 国际媒体
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
     path: ./ruleset/GlobalMedia.yaml
+    
   Apple: # 苹果服务
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Classical.yaml
     path: ./ruleset/Apple.yaml
+    
   Microsoft: # 微软服务
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
+    
   Google: # 谷歌服务
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml
     path: ./ruleset/Google.yaml
+    
   Telegram: # 电报消息
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
     path: ./ruleset/Telegram.yaml
+    
   Twitter: # 推特消息
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml
     path: ./ruleset/Twitter.yaml
+    
   BiliBili: # 哔哩哔哩
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
     path: ./ruleset/BiliBili.yaml
+    
   Game: # 游戏平台
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
     path: ./ruleset/Game.yaml
+    
   ChinaIP: # 中国大陆IP
     <<: *i
     url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml
     path: ./ruleset/ChinaIP.yaml
+    
   ProxyLite: # 代理网站
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
