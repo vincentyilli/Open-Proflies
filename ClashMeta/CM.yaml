@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/17
+# 最后更新时间: 2023/4/18
 #
 # ================
 
@@ -98,15 +98,30 @@ dns:
 experimental:
   ignore-resolve-fail: true
     
-# proxy引用相关
+###建立锚点
+    
+# 策略组引用相关
 pr: &pr {type: select, proxies: [🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, DIRECT]}
 
 # 订阅更新和延迟测试相关
-p: &p {type: http, interval: 21600, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
 
-auto: &auto {type: url-test, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+# 自动选择相关
+auto: &auto {type: url-test, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
 
+# 手动选择相关
 use: &use {type: select, use: [Subscribe]}
+
+# classical规则相关
+c: &c {type: http, behavior: classical, interval: 86400}
+
+# domain规则相关
+d: &d {type: http, behavior: domain, interval: 86400}
+
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, interval: 86400}
+
+###结束
 
 proxy-providers:
   Subscribe:
@@ -168,42 +183,37 @@ proxy-groups:
  - {name: 🇮🇳 印度节点, <<: *auto, filter: "印度|印|IN|India"}
   
 rule-providers:
-  lancidr:
-    type: http
-    behavior: ipcidr
+  lancidr: # 局域网
+    <<: *i
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
     path: ./ruleset/lancidr.yaml
-    interval: 86400
-  GlobalMedia:
-    type: http
-    behavior: classical
+
+  GlobalMedia: # 国际媒体
+    <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
     path: ./ruleset/GlobalMedia.yaml
     interval: 86400
-  Apple:
-    type: http
-    behavior: classical
+
+  Apple: # 苹果
+    <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Classical.yaml
     path: ./ruleset/Apple.yaml
     interval: 86400
-  Microsoft:
-    type: http
-    behavior: classical
+
+  Microsoft: # 微软
+    <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
-    interval: 86400
-  BiliBili:
-    type: http
-    behavior: classical
+
+  BiliBili: # 哔哩哔哩
+    <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
     path: ./ruleset/BiliBili.yaml
-    interval: 86400
-  Game:
-    type: http
-    behavior: classical
+    
+  Game: # 游戏平台
+    <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
     path: ./ruleset/Game.yaml
-    interval: 86400
     
 rules:
   - RULE-SET,lancidr,DIRECT
