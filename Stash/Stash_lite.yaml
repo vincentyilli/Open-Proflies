@@ -2,9 +2,10 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/1
+# 最后更新时间: 2023/4/18
 #
 # ================
+
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -13,7 +14,7 @@ allow-lan: true
 bind-address: '*'
 mode: rule
 log-level: info
-ipv6: true
+ipv6: false
 external-controller: 127.0.0.1:9090
 
 dns:
@@ -49,8 +50,33 @@ dns:
      geoip-code: CN
      ipcidr:
        - 240.0.0.0/4
+       
+###建立锚点
 
-# > 订阅的信息展示
+# 策略组引用相关
+pr: &pr {type: select, proxies: [自动选择, 手动切换, DIRECT]}
+
+# 订阅更新和延迟测试相关
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
+
+# 自动选择相关
+auto: &auto {type: url-test, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+
+# 手动选择相关
+use: &use {type: select, use: [Subscribe]}
+
+# classical规则相关
+c: &c {type: http, behavior: classical, interval: 86400}
+
+# domain规则相关
+d: &d {type: http, behavior: domain, interval: 86400}
+
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, interval: 86400}
+
+###结束
+
+# > 订阅信息展示
 subscribe-url: http://your-service-provider
 
 proxies:
@@ -58,54 +84,44 @@ proxies:
 proxy-providers:
 # > 远程服务器
   Subscribe:
+    <<: *p
     url: http://your-service-provider
-    interval: 600
+
 
 proxy-groups:
 
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 国外网站
-  proxies: []
-  type: select
-  url: http://cp.cloudflare.com/generate_204
-  
+- {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
+
+- {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
+
+- {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}  
+
+- {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
   
 rule-providers:
 
-  Streaming:
-    type: http
-    behavior: domain
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/Streaming.yaml"
-    path: ./ruleset/Streaming.yaml
-    interval: 86400
-
-  Global:
-    type: http
-    behavior: domain
-    url: "https://ghproxy.com/https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/Global.yaml"
-    path: ./ruleset/Global.yaml
-    interval: 86400
-
-  lancidr:
-    type: http
-    behavior: ipcidr
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
-    path: ./ruleset/lancidr.yaml
-    interval: 86400
+  ProxyMedia: # 国际媒体
+    <<: *c
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml
+    path: ./ruleset/ProxyMedia.yaml
+    
+  Proxy: # 代理网站
+    <<: *d
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyGFWlist.yaml
+    path: ./ruleset/ProxyGFWlist.yaml
+    
+  Lan: # 局域网
+    <<: *d
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
+    path: ./ruleset/LocalAreaNetwork.yaml
 
 rules:
-- DOMAIN,clash.razord.top,DIRECT
-- DOMAIN,yacd.haishan.me,DIRECT
-- RULE-SET,Streaming,国外网站
-- RULE-SET,Global,国外网站
-- RULE-SET,lancidr,DIRECT
+- RULE-SET,ProxyMedia,国外网站
+- RULE-SET,Proxy,国外网站
+- RULE-SET,Lan,DIRECT
 - GEOIP,CN,DIRECT
 - MATCH,国外网站
 
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
-
