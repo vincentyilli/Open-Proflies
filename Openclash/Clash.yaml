@@ -1,3 +1,11 @@
+# Author:https://github.com/Repcz
+#
+# 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
+#
+# 最后更新时间: 2023/4/18
+#
+# ================
+
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -6,12 +14,12 @@ allow-lan: true
 bind-address: '*'
 mode: rule
 log-level: info
-ipv6: true
+ipv6: false
 external-controller: 127.0.0.1:9090
 
 dns:
   enable: true 
-  ipv6: true
+  ipv6: false
   listen: 0.0.0.0:53
   enhanced-mode: fake-ip  
   fake-ip-range: 198.18.0.1/16 
@@ -34,8 +42,6 @@ dns:
     - 119.29.29.29
     - 114.114.114.114
   fallback:
-    - 8.8.8.8
-    - 1.1.1.1
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
     - https://dns.alidns.com/dns-query
@@ -44,292 +50,78 @@ dns:
      geoip-code: CN
      ipcidr:
        - 240.0.0.0/4
+    
+# proxy引用相关
+pr: &pr {type: select, proxies: [🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, DIRECT]}
+
+# 订阅更新和延迟测试相关
+p: &p {type: http, interval: 21600, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
+
+# 自动选择相关
+auto: &auto {type: url-test, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+
+# 手动选择相关
+use: &use {type: select, use: [Subscribe]}
 
 proxy-providers:
-  代理订阅:
-    type: http
+  Subscribe:
+    <<: *p
     url: "http://your-service-provider"
-    interval: 3600
     path: ./all.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-  HK:
-    type: file
-    path: ./all.yaml
-    filter: 港|HK|(?i)Hong
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  JP:
-    type: file
-    path: ./all.yaml
-    filter: 日|东京|JP|(?i)Japan
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  US:
-    type: file
-    path: ./all.yaml
-    filter: 美|(?i)States|American
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  TW:
-    type: file
-    path: ./all.yaml
-    filter: 台|湾|TW|(?i)Taiwan
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  SG:
-    type: file
-    path: ./all.yaml
-    interval: 3600
-    filter: 新|坡|SG|(?i)Singapore
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  UK:
-    type: file
-    path: ./all.yaml
-    interval: 3600
-    filter: 英|UK|(?i)Kingdom
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  AU:
-    type: file
-    path: ./all.yaml
-    interval: 3600
-    filter: 澳|AU|(?i)Austria
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
-  IN:
-    type: file
-    path: ./all.yaml
-    interval: 3600
-    filter: 印度|印|IN|India
-    health-check:
-      enable: true
-      interval: 120
-      url: http://www.gstatic.com/generate_204
+          
 proxies: null
+
 proxy-groups:
-  - name: 🚀 手动切换
-    type: select
-    use:
-      - 代理订阅
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🌏 国外网站
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🎬 国际媒体
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🍎 苹果服务
-    type: select
-    proxies:
-      - DIRECT
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-  - name: 🧩 微软服务
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🌌 谷歌服务
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 📟 电报消息
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🐦 推特服务
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🎮 游戏平台
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🎬 哔哩哔哩
-    type: select
-    proxies:
-      - DIRECT
-      - 🇭🇰 香港节点
-      - 🇨🇳 台湾节点
-      - 🚀 手动切换
-  - name: 🌏 国内网站
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 手动切换
-  - name: 🆎 AdBlock
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇺🇲 美国节点
-      - 🇨🇳 台湾节点
-      - 🇸🇬 狮城节点
-      - 🇬🇧 英国节点
-      - 🇦🇺 澳洲节点
-      - 🇮🇳 印度节点
-      - 🚀 手动切换
-      - DIRECT
-  - name: 🇭🇰 香港节点
-    type: select
-    use:
-      - HK
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - REJECT
-  - name: 🇯🇵 日本节点
-    type: select
-    use:
-      - JP
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - REJECT
-  - name: 🇨🇳 台湾节点
-    type: select
-    use:
-      - TW
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - REJECT
-  - name: 🇺🇲 美国节点
-    type: select
-    use:
-      - US
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - REJECT
-  - name: 🇸🇬 狮城节点
-    type: select
-    use:
-      - SG
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    proxies:
-      - REJECT
-  - name: 🇬🇧 英国节点
-    type: select
-    use:
-      - UK
-    url: http://www.gstatic.com/generate_204
-    interval: 600
-    proxies:
-      - REJECT
-  - name: 🇦🇺 澳洲节点
-    type: select
-    use:
-      - AU
-    url: http://www.gstatic.com/generate_204
-    interval: 600
-    proxies:
-      - REJECT
-  - name: 🇮🇳 印度节点
-    type: select
-    use:
-      - IN
-    url: http://www.gstatic.com/generate_204
-    interval: 600
-    proxies:
-      - REJECT
+
+ #分流分组
+
+ - {name: 🌏 国外网站, <<: *pr}
+
+ - {name: 🎬 国际媒体, <<: *pr}
+
+ - {name: 🍎 苹果服务, <<: *pr}
+
+ - {name: 🧩 微软服务, <<: *pr}
+
+ - {name: 🌌 谷歌服务, <<: *pr}
+
+ - {name: 📟 电报消息, <<: *pr}
+
+ - {name: 🐦 推特服务, <<: *pr}
+
+ - {name: 🎮 游戏平台, <<: *pr}
+  
+ - {name: 🎬 哔哩哔哩, type: select, proxies: [DIRECT, 🇭🇰 香港节点, 🇨🇳 台湾节点]}
+
+ - {name: 🌏 国内网站, type: select, proxies: [DIRECT, 🚀 手动切换]}
+  
+ - {name: 🆎 AdBlock, type: select, proxies: [REJECT, DIRECT]}
+  
+ - {name: 🐟 漏网之鱼, <<: *pr}
+ 
+ #节点地区分组
+ 
+ - {name: 🇭🇰 香港节点, <<: *use, filter: "港|HK|(?i)Hong"}
+
+ - {name: 🇯🇵 日本节点, <<: *use, filter: "日|东京|JP|(?i)Japan"}
+
+ - {name: 🇺🇲 美国节点, <<: *use, filter: "美|US|(?i)States|American"}
+
+ - {name: 🇨🇳 台湾节点, <<: *use, filter: "台|湾|TW|(?i)Taiwan"}
+
+ - {name: 🇸🇬 狮城节点, <<: *use, filter: "新|坡|SG|(?i)Singapore"}
+  
+ - {name: 🇬🇧 英国节点, <<: *use, filter: "英|UK|(?i)Kingdom"}
+  
+ - {name: 🇦🇺 澳洲节点, <<: *use, filter: "澳|AU|(?i)Austria"}
+ 
+ - {name: 🇮🇳 印度节点, <<: *use, filter: "印度|印|IN|India"}
+
+ - {name: 🚀 手动切换, <<: *use}
+
+ - {name: 🚀 自动切换, <<: *auto}
+
+ 
 rule-providers:
   Direct:
     type: http
@@ -351,9 +143,9 @@ rule-providers:
     interval: 86400
   Ad:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Advertising/Advertising_Classical.yaml
-    path: ./ruleset/Advertising_Classical.yaml
+    behavior: domain
+    url: https://anti-ad.net/clash.yaml
+    path: ./ruleset/anti-ad-clash.yaml
     interval: 86400
   GlobalMedia:
     type: http
@@ -372,6 +164,12 @@ rule-providers:
     behavior: classical
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
+    interval: 86400
+  Github:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
+    path: ./ruleset/Github.yaml
     interval: 86400
   Google:
     type: http
@@ -406,7 +204,7 @@ rule-providers:
   ChinaIP:
     type: http
     behavior: ipcidr
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
+    url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml
     path: ./ruleset/ChinaIP.yaml
     interval: 86400
   ProxyLite:
@@ -415,21 +213,15 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
     path: ./ruleset/ProxyLite.yaml
     interval: 86400
-  Speedtest:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Speedtest/Speedtest.yaml
-    path: ./ruleset/Speedtest.yaml
-    interval: 86400
 rules:
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Lan,DIRECT
   - RULE-SET,Download,DIRECT
-  - RULE-SET,Speedtest,🚀 手动切换
   - RULE-SET,Ad,🆎 AdBlock
   - RULE-SET,GlobalMedia,🎬 国际媒体
   - RULE-SET,Apple,🍎 苹果服务
   - RULE-SET,Microsoft,🧩 微软服务
+  - RULE-SET,Github,🧩 微软服务
   - RULE-SET,Google,🌌 谷歌服务
   - RULE-SET,Telegram,📟 电报消息
   - RULE-SET,Twitter,🐦 推特服务
