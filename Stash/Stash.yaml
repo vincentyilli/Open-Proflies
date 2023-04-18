@@ -75,7 +75,7 @@ i: &i {type: http, behavior: ipcidr, interval: 86400}
 
 ###结束
 
-# > 订阅的信息展示
+# > 订阅信息展示
 subscribe-url: http://your-service-provider
 
 proxies:
@@ -83,8 +83,9 @@ proxies:
 proxy-providers:
 # > 远程服务器
   Subscribe:
+    <<: *p
     url: http://your-service-provider
-    interval: 600
+
 
 proxy-groups:
 
