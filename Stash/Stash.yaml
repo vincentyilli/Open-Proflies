@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/1
+# 最后更新时间: 2023/4/18
 #
 # ================
 port: 7890
@@ -13,12 +13,12 @@ allow-lan: true
 bind-address: '*'
 mode: rule
 log-level: info
-ipv6: true
+ipv6: false
 external-controller: 127.0.0.1:9090
 
 dns:
   enable: true 
-  ipv6: true
+  ipv6: flase
   listen: 0.0.0.0:53
   enhanced-mode: fake-ip  
   fake-ip-range: 198.18.0.1/16 
@@ -50,7 +50,30 @@ dns:
      ipcidr:
        - 240.0.0.0/4
        
+###建立锚点
 
+# 策略组引用相关
+pr: &pr {type: select, proxies: [自动选择, 手动切换, 香港节点, 日本节点, 美国节点, 台湾节点, 狮城节点, 英国节点, 澳洲节点, 印度节点, DIRECT]}
+
+# 订阅更新和延迟测试相关
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
+
+# 自动选择相关
+auto: &auto {type: url-test, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+
+# 手动选择相关
+use: &use {type: select, use: [Subscribe]}
+
+# classical规则相关
+c: &c {type: http, behavior: classical, interval: 86400}
+
+# domain规则相关
+d: &d {type: http, behavior: domain, interval: 86400}
+
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, interval: 86400}
+
+###结束
 
 # > 订阅的信息展示
 subscribe-url: http://your-service-provider
@@ -63,264 +86,131 @@ proxy-providers:
     url: http://your-service-provider
     interval: 600
 
-
 proxy-groups:
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 手动选择
-  proxies: []
-  type: select
-  url: http://cp.cloudflare.com/generate_204
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
-  name: 国外网站
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
-  name: 国际媒体
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png
-  name: 苹果服务
-  proxies:
-  - DIRECT
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
-  name: 微软服务
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
-  name: 谷歌服务
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png
-  name: 哔哩哔哩
-  proxies:
-  - DIRECT
-  - 香港节点
-  - 台湾节点
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
-  name: 游戏平台
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
-  name: 电报消息
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
-  name: 广告拦截
-  proxies:
-  - REJECT
-  - DIRECT
-  type: select
-- icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
-  name: 兜底分流
-  proxies:
-  - 香港节点
-  - 台湾节点
-  - 日本节点
-  - 狮城节点
-  - 美国节点
-  - DIRECT
-  type: select
-- filter: "港|\U0001F1ED\U0001F1F0|HK|(?i)Hong"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 香港节点
-  proxies: []
-  tolerance: 50
-  type: url-test
-  url: http://cp.cloudflare.com/generate_204
-- filter: "台|\U0001F1E8\U0001F1F3|\U0001F1F9\U0001F1FC|湾|TW|(?i)Taiwan"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 台湾节点
-  proxies: []
-  tolerance: 50
-  type: url-test
-  url: http://cp.cloudflare.com/generate_204
-- filter: "日|\U0001F1EF\U0001F1F5|东京|JP|(?i)Japan"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 日本节点
-  proxies: []
-  tolerance: 50
-  type: url-test
-  url: http://cp.cloudflare.com/generate_204
-- filter: "新加坡|坡|狮城|\U0001F1F8\U0001F1EC|SG|(?i)Singapore"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 狮城节点
-  proxies: []
-  tolerance: 50
-  type: url-test
-  url: http://cp.cloudflare.com/generate_204
-- filter: "美|\U0001F1FA\U0001F1F2|US|(?i)States|American"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-  include-all: true
-  interval: 120
-  lazy: true
-  name: 美国节点
-  proxies: []
-  tolerance: 50
-  type: url-test
-  url: http://cp.cloudflare.com/generate_204
+
+# 分流分组
+
+- {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
+
+- {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
+
+- {name: 苹果服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png, <<: *pr}
+
+- {name: 微软服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png, <<: *pr}
+
+- {name: 谷歌服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
+
+- {name: 电报消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
+
+- {name: 推特消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png, <<: *pr}
+
+- {name: 游戏平台, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png, <<: *pr}
+
+- {name: 哔哩哔哩, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png, type: select, proxies: [DIRECT, 香港节点, 台湾节点]}
+
+- {name: 广告拦截, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png, type: select, proxies: [REJECT, DIRECT]}
+
+- {name: 兜底分流, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
+
+# 节点地区分流
+
+- {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}
+
+- {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
+
+- {name: 香港节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png, <<: *auto, filter: "港|HK|(?i)Hong"}
+
+- {name: 日本节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png, <<: *auto, filter: "日|东京|JP|(?i)Japan"}
+
+- {name: 美国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png, <<: *auto, filter: "美|US|(?i)States|American"}
+
+- {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png, <<: *auto, filter: "台|湾|TW|(?i)Taiwan"}
+
+- {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "新|坡|SG|(?i)Singapore"}
+  
+- {name: 英国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png, <<: *auto, filter: "英|UK|(?i)Kingdom"}
+  
+- {name: 澳洲节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png, <<: *auto, filter: "澳|AU|(?i)Austria"}
+ 
+- {name: 印度节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/India.png, <<: *auto, filter: "印度|印|IN|India"}
 
 rule-providers:
-  Ad:
-    behavior: domain
-    interval: 86400
+
+  Ad: # 广告
+    <<: *d
+    url: https://anti-ad.net/clash.yaml
     path: ./ruleset/BanAD.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml
-  Apple:
-    behavior: domain
-    interval: 86400
+    
+  Apple: # 苹果
+    <<: *d
+    url: https://rules.kr328.app/apple.yaml
     path: ./ruleset/Apple.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Apple.yaml
-  BiliBili:
-    behavior: domain
-    interval: 86400
+    
+  BiliBili: # 哔哩哔哩
+    <<: *d
+    url: https://rules.kr328.app/bilibili.yaml
     path: ./ruleset/BiliBili.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml
-  ChinaIp:
-    behavior: ipcidr
-    interval: 86400
+
+  ChinaIp: # 中国大陆IP
+    <<: *i
+    url: https://rules.kr328.app/cn-ips.yaml
     path: ./ruleset/ChinaIp.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIp.yaml
-  ChinaIpV6:
-    behavior: domain
-    interval: 86400
-    path: ./ruleset/ChinaIP.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaIpV6.yaml
-  UnBan:
-    behavior: domain
-    interval: 86400
-    path: ./ruleset/Direct.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml
-  Steam:
-    behavior: classical
-    interval: 86400
+        
+  Steam: # 游戏平台
+    <<: *d
+    url: https://rules.kr328.app/steam.yaml
     path: ./ruleset/Steam.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
-  OneDrive:
-    behavior: domain
-    interval: 86400
-    path: ./ruleset/OneDrive.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/OneDrive.yaml
-  GlobalMedia:
-    behavior: classical
-    interval: 86400
-    path: ./ruleset/ProxyMedia.yaml
-    type: http
+    
+  GlobalMedia: # 国际媒体
+    <<: *c
     url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml
-  Google:
-    behavior: domain
-    interval: 86400
+    path: ./ruleset/ProxyMedia.yaml
+
+  Google: # 谷歌
+    <<: *d
+    url: https://rules.kr328.app/google.yaml
     path: ./ruleset/Google.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml
-  Lan:
-    behavior: domain
-    interval: 86400
-    path: ./ruleset/LocalAreaNetwork.yaml
-    type: http
+    
+  Lan: # 局域网
+    <<: *d
     url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
-  Microsoft:
-    behavior: domain
-    interval: 86400
+    path: ./ruleset/LocalAreaNetwork.yaml
+
+  Microsoft: # 微软
+    <<: *d
+    url: https://rules.kr328.app/microsoft.yaml
     path: ./ruleset/Microsoft.yaml
-    type: http
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml
-  ProxyLite:
-    behavior: domain
-    interval: 86400
-    path: ./ruleset/ProxyLite.yaml
-    type: http
+
+  ProxyLite: # 代理网站
+    <<: *d
     url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml
-  Telegram:
-    behavior: classical
-    interval: 86400
+    path: ./ruleset/ProxyLite.yaml
+
+  Telegram: # 电报消息
+    <<: *d
+    url: https://rules.kr328.app/telegram.yaml
     path: ./ruleset/Telegram.yaml
-    type: http
-    url: https://ghproxy.com/https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml
+    
+  Twitter: # 推特消息
+    <<: *d
+    url: https://rules.kr328.app/twitter.yaml
+    path: ./ruleset/Twitter.yaml
 
 rules:
-- RULE-SET,UnBan,DIRECT
 - RULE-SET,Lan,DIRECT
 - RULE-SET,Ad,广告拦截
 - RULE-SET,GlobalMedia,国际媒体
 - RULE-SET,Apple,苹果服务
 - RULE-SET,Microsoft,微软服务
-- RULE-SET,OneDrive,微软服务
 - RULE-SET,Google,谷歌服务
+- RULE-SET,Twitter,推特消息
 - RULE-SET,Telegram,电报消息
 - RULE-SET,BiliBili,哔哩哔哩
 - RULE-SET,Steam,游戏平台
 - RULE-SET,ProxyLite,国外网站
 - RULE-SET,ChinaIp,DIRECT
-- RULE-SET,ChinaIpV6,DIRECT
 - GEOIP,CN,DIRECT,no-resolve
 - MATCH,兜底分流
-
 
 script:
   shortcuts:
