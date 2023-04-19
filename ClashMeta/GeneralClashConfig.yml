@@ -3,9 +3,10 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/1
+# 最后更新时间: 2023/4/19
 #
 # ================
+
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -18,9 +19,16 @@ ipv6: false
 mode: rule
 log-level: info
 external-controller: 0.0.0.0:9090
+
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  #mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+  
 profile:
   store-selected: true
   store-fake-ip: true
+  
 sniffer:
   enable: true
   parse-pure-ip: true
@@ -36,15 +44,26 @@ sniffer:
   - "+.jd.com"
   sniff:
     TLS:
+      ports: [443, 8443]
     HTTP:
-      ports:
-      - 80
-      - 8080-8880
+      ports: [80, 8080-8880]
       override-destination: true
+      
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 'any:53'
+  auto-route: true
+  auto-detect-interface: true
+        
 dns:
   enable: true
   ipv6: false
   enhanced-mode: fake-ip
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
      - '*.lan'
@@ -60,17 +79,7 @@ dns:
      - '*.battlenet.com'
      - '*.blzstatic.cn'
      - '*.battle.net'
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - '!CN'
-    ipcidr: 
-      - 240.0.0.0/4
-    domain: 
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+     - '*.mcdn.bilivideo.cn'
   nameserver:
      - 223.5.5.5
      - 119.29.29.29
@@ -78,7 +87,18 @@ dns:
   fallback:
      - https://cloudflare-dns.com/dns-query
      - https://dns.google/dns-query
-  proxy-server-nameserver:
-    - 223.5.5.5
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr: 
+      - 240.0.0.0/4
+    domain: 
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+   proxy-server-nameserver:
+      - 223.5.5.5
 experimental:
   ignore-resolve-fail: true
