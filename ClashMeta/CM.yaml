@@ -60,6 +60,9 @@ dns:
   enable: true
   ipv6: false
   enhanced-mode: fake-ip
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
      - '*.lan'
@@ -75,17 +78,7 @@ dns:
      - '*.battlenet.com'
      - '*.blzstatic.cn'
      - '*.battle.net'
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - '!CN'
-    ipcidr: 
-      - 240.0.0.0/4
-    domain: 
-      - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
+     - '*.mcdn.bilivideo.cn'
   nameserver:
      - 223.5.5.5
      - 119.29.29.29
@@ -93,8 +86,19 @@ dns:
   fallback:
      - https://cloudflare-dns.com/dns-query
      - https://dns.google/dns-query
-  proxy-server-nameserver:
-    - 223.5.5.5
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr: 
+      - 240.0.0.0/4
+    domain: 
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+   proxy-server-nameserver:
+      - 223.5.5.5
 experimental:
   ignore-resolve-fail: true
     
