@@ -19,7 +19,6 @@ ipv6: false
 external-controller: 127.0.0.1:9090   # Clash 的 RESTful API
 
 dns:
-  
   enable: true            # DNS开关(false/true)
   ipv6: false             # IP6解析开关；如果为false，将返回ip6结果为空
   listen: 0.0.0.0:53      # DNS监听地址
