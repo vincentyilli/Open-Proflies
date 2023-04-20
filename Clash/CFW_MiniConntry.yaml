@@ -6,54 +6,56 @@
 #
 # ================
 
-port: 7890         # HTTP 代理端口
-socks-port: 7891   # SOCKS5 代理端口
-redir-port: 7892   # Linux 和 macOS 的 redir 代理端口
-mixed-port: 7893   # 混合端口 HTTP和SOCKS5用一个端口
-allow-lan: true    # 允许局域网的连接（可用来共享代理）
-bind-address: '*'  # 仅在将allow-lan设置为true时适用
-                   # #"*": 绑定所有IP地址
-mode: rule         # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
-log-level: info    # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
-ipv6: false 
-external-controller: 127.0.0.1:9090   # Clash 的 RESTful API
+#port: 7890           # HTTP 代理端口
+#socks-port: 7891     # SOCKS5 代理端口
+#redir-port: 7892     # Linux 和 macOS 的 redir 代理端口
+mixed-port: 7893      # 混合端口 HTTP和SOCKS5用一个端口
+allow-lan: true       # 允许局域网的连接（可用来共享代理）
+bind-address: "*"     # 仅在将allow-lan设置为true时适用
+                      # #"*": 绑定所有IP地址
+ipv6: false           # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
+mode: rule            # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
+log-level: info       # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
 
 dns:
-  enable: true            # DNS开关(false/true)
-  ipv6: false             # IP6解析开关；如果为false，将返回ip6结果为空
-  listen: 0.0.0.0:53      # DNS监听地址
-  enhanced-mode: fake-ip  # 模式：redir-host或fake-ip
-  default-nameserver:     # 解析非IP的dns用的dns服务器,只支持纯IP
+  enable: true             # 关闭将使用系统 DNS
+  ipv6: false              # IPV6解析开关；如果为false，将返回ipv6结果为空
+  enhanced-mode: fake-ip   # 模式：redir-host或fake-ip
+  listen: 0.0.0.0:53       # DNS监听地址
+  default-nameserver:      # 解析非IP的dns用的dns服务器,只支持纯IP
     - 223.5.5.5
     - 119.29.29.29
   fake-ip-range: 198.18.0.1/16    # Fake-IP解析地址池
-  fake-ip-filter:         # fake ip 白名单列表
-    - '*.lan'
-    - localhost.ptlogin2.qq.com
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - '+.xboxlive.com'
-    - 'msftconnecttest.com'
-    - 'xbox.*.microsoft.com'
-    - '*.battlenet.com.cn'
-    - '*.battlenet.com'
-    - '*.blzstatic.cn'
-    - '*.battle.net'
-    - '*.mcdn.bilivideo.cn'
+  fake-ip-filter:          # fake ip 白名单列表,以下地址不会下发fakeip映射用于连接
+     - '*.lan'
+     - localhost.ptlogin2.qq.com
+     - '+.srv.nintendo.net'
+     - '+.stun.playstation.net'
+     - '+.msftconnecttest.com'
+     - '+.msftncsi.com'
+     - '+.xboxlive.com'
+     - 'msftconnecttest.com'
+     - 'xbox.*.microsoft.com'
+     - '*.battlenet.com.cn'
+     - '*.battlenet.com'
+     - '*.blzstatic.cn'
+     - '*.battle.net'
+     - '*.mcdn.bilivideo.cn'
   nameserver:             # 默认DNS服务器，支持udp/tcp/dot/doh/doq
-    - 223.5.5.5
-    - 119.29.29.29
+     - 223.5.5.5
+     - 119.29.29.29
   fallback:               # 解析国外域名的DNS服务器
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.google/dns-query
-    - https://dns.alidns.com/dns-query
-  fallback-filter:
-     geoip: true
-     geoip-code: CN
-     ipcidr:              # 在这个网段内的 IP 地址会被考虑为被污染的 IP
-       - 240.0.0.0/4
+     - https://cloudflare-dns.com/dns-query
+     - https://dns.google/dns-query
+  fallback-filter:        # 配置 fallback 使用条件
+    geoip: true           # 配置是否使用 geoip
+    geoip-code: CN        # 当 nameserver 域名的 IP 查询 geoip 库为 CN 时，不使用 fallback 中的 DNS 查询结果
+    ipcidr:               # 在这个网段内的 IP 地址会被考虑为被污染的 IP
+      - 240.0.0.0/4
+    domain:               # 这些域名被视为已污染,匹配到这些域名,会直接使用fallback解析,不去使用nameserver
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
     
 ###建立锚点
 
