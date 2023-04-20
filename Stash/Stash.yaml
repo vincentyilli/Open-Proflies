@@ -134,7 +134,7 @@ proxy-groups:
 
 - {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png, <<: *auto, filter: "台|湾|TW|(?i)Taiwan"}
 
-- {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "新|坡|SG|(?i)Singapore"}
+- {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "新|狮|坡|SG|(?i)Singapore"}
   
 - {name: 英国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png, <<: *auto, filter: "英|UK|(?i)Kingdom"}
   
