@@ -1,4 +1,3 @@
-
 # Author:https://github.com/Repcz
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
@@ -233,9 +232,9 @@ rules:
   - RULE-SET,Apple,🍎 苹果服务
   - RULE-SET,Github,🧩 微软服务
   - RULE-SET,Microsoft,🧩 微软服务
-  - GEOIP,google,🌌 谷歌服务
-  - GEOIP,telegram,📟 电报消息
-  - GEOIP,twitter,🐦 推特服务
+  - GEOIP,google,🌌 谷歌服务,no-resolve
+  - GEOIP,telegram,📟 电报消息,no-resolve
+  - GEOIP,twitter,🐦 推特服务,no-resolve
   - RULE-SET,BiliBili,🎬 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
   - GEOSITE,gfw,🌏 国外网站
