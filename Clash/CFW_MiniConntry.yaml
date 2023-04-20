@@ -234,6 +234,6 @@ rules:
   - RULE-SET,BiliBili,🎬 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
   - RULE-SET,ProxyLite,🌏 国外网站
-  - RULE-SET,ChinaIP,🌏 国内网站
+  - RULE-SET,ChinaIP,🌏 国内网站,no-resolve
   - GEOIP,CN,🌏 国内网站,no-resolve
   - MATCH,🐟 漏网之鱼
