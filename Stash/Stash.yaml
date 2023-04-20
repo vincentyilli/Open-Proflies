@@ -214,7 +214,7 @@ rules:
 - RULE-SET,BiliBili,哔哩哔哩
 - RULE-SET,Steam,游戏平台
 - RULE-SET,ProxyLite,国外网站
-- RULE-SET,ChinaIp,DIRECT
+- RULE-SET,ChinaIp,DIRECT,no-resolve
 - GEOIP,CN,DIRECT,no-resolve
 - MATCH,兜底分流
 
