@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/20
+# 最后更新时间: 2023/4/21
 #
 # ================
 
@@ -132,7 +132,7 @@ proxy-groups:
 
 - {name: 美国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png, <<: *auto, filter: "美|US|(?i)States|American"}
 
-- {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png, <<: *auto, filter: "台|湾|TW|(?i)Taiwan"}
+- {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png, <<: *auto, filter: "台|湾|TW|(?i)Taiwan"}
 
 - {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "新|狮|坡|SG|(?i)Singapore"}
   
