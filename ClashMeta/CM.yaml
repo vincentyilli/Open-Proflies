@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/20
+# 最后更新时间: 2023/4/22
 #
 # ================
 
@@ -211,7 +211,7 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
     path: ./ruleset/Microsoft.yaml
     
-  Github: # 微软服务
+  Github: # 微软
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
     path: ./ruleset/Github.yaml
