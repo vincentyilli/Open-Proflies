@@ -2,7 +2,7 @@
 #
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/22
+# 最后更新时间: 2023/4/23
 #
 # ================
 
@@ -18,6 +18,7 @@ bind-address: "*"     # 仅在将allow-lan设置为true时适用
 ipv6: false           # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
 mode: rule            # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
 log-level: info       # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
+external-controller: 127.0.0.1:9090   #外部控制器,可以使用 RESTful API 来控制你的 clash 内核
 
 geox-url:             #自定义 geodata url
   geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
@@ -128,10 +129,9 @@ i: &i {type: http, behavior: ipcidr, interval: 86400}
 proxy-providers:
   Subscribe:
     <<: *p
-    url: "https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    url: "机场订阅"
     path: ./all.yaml
-    # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
-    # 也可以使用在线订阅转换，在进阶模式中勾选`输出为Node List`，将Clash订阅链接转换为只包含节点信息的配置，并替换掉整个引号""内的链接
+    # Meta支持机场通用订阅
           
 proxies: null
 
