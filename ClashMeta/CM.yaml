@@ -1,8 +1,8 @@
 # Author:https://github.com/Repcz
-#
+# TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/23
+# 最后更新时间: 2023/4/26
 #
 # ================
 
@@ -87,8 +87,8 @@ dns:
      - 223.5.5.5
      - 119.29.29.29
   fallback:               # 解析国外域名的DNS服务器
-     - https://cloudflare-dns.com/dns-query
-     - https://dns.google/dns-query
+     - https://doh.pub/dns-query
+     - https://dns.alidns.com/dns-query
   fallback-filter:        # 配置 fallback 使用条件
     geoip: true           # 配置是否使用 geoip
     geoip-code: CN        # 当 nameserver 域名的 IP 查询 geoip 库为 CN 时，不使用 fallback 中的 DNS 查询结果
