@@ -1,0 +1,181 @@
+# Author:https://github.com/Repcz
+# TG:https://t.me/RepczChannel
+#
+# 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
+#
+# 最后更新时间: 2023/4/28
+#
+# ================
+
+#port: 7890           # HTTP 代理端口
+#socks-port: 7891     # SOCKS5 代理端口
+#redir-port: 7892     # Linux 和 macOS 的 redir 代理端口
+mixed-port: 7893      # 混合端口 HTTP和SOCKS5用一个端口
+allow-lan: true       # 允许局域网的连接（可用来共享代理）
+bind-address: "*"     # 仅在将allow-lan设置为true时适用
+                      # #"*": 绑定所有IP地址
+ipv6: false           # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
+mode: rule            # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
+log-level: info       # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
+external-controller: 127.0.0.1:9090   #外部控制器,可以使用 RESTful API 来控制你的 clash 内核
+
+dns:
+  enable: true             # 关闭将使用系统 DNS
+  ipv6: false              # IPV6解析开关；如果为false，将返回ipv6结果为空
+  enhanced-mode: fake-ip   # 模式：redir-host或fake-ip
+  listen: 0.0.0.0:53       # DNS监听地址
+  default-nameserver:      # 解析非IP的dns用的dns服务器,只支持纯IP
+    - 223.5.5.5
+    - 119.29.29.29
+  fake-ip-range: 198.18.0.1/16    # Fake-IP解析地址池
+  fake-ip-filter:          # fake ip 白名单列表,以下地址不会下发fakeip映射用于连接
+     - '*.lan'
+     - localhost.ptlogin2.qq.com
+     - '+.srv.nintendo.net'
+     - '+.stun.playstation.net'
+     - '+.msftconnecttest.com'
+     - '+.msftncsi.com'
+     - '+.xboxlive.com'
+     - 'msftconnecttest.com'
+     - 'xbox.*.microsoft.com'
+     - '*.battlenet.com.cn'
+     - '*.battlenet.com'
+     - '*.blzstatic.cn'
+     - '*.battle.net'
+     - '*.mcdn.bilivideo.cn'
+  nameserver:             # 默认DNS服务器，支持udp/tcp/dot/doh/doq
+     - 223.5.5.5
+     - 119.29.29.29
+  fallback:               # 解析国外域名的DNS服务器
+     - https://cloudflare-dns.com/dns-query
+     - https://dns.google/dns-query
+  fallback-filter:        # 配置 fallback 使用条件
+    geoip: true           # 配置是否使用 geoip
+    geoip-code: CN        # 当 nameserver 域名的 IP 查询 geoip 库为 CN 时，不使用 fallback 中的 DNS 查询结果
+    ipcidr:               # 在这个网段内的 IP 地址会被考虑为被污染的 IP
+      - 240.0.0.0/4
+    domain:               # 这些域名被视为已污染,匹配到这些域名,会直接使用fallback解析,不去使用nameserver
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+       
+###建立锚点
+
+# 策略组引用相关
+pr: &pr {type: select, proxies: [自动选择, 手动切换, 香港节点, 日本节点, 美国节点, 台湾节点, 狮城节点, 英国节点, 澳洲节点, 印度节点, DIRECT]}
+
+# 订阅更新和延迟测试相关
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
+
+# 自动选择相关
+auto: &auto {type: url-test, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+
+# 手动选择相关
+use: &use {type: select, use: [Subscribe]}
+
+# classical规则相关
+c: &c {type: http, behavior: classical, interval: 86400}
+
+# domain规则相关
+d: &d {type: http, behavior: domain, interval: 86400}
+
+# ipcidr规则相关
+i: &i {type: http, behavior: ipcidr, interval: 86400}
+
+###结束
+
+# > 订阅信息展示
+subscribe-url: http://your-service-provider
+
+proxies:
+
+proxy-providers:
+# > 远程服务器
+  Subscribe:
+    <<: *p
+    url: http://your-service-provider
+
+
+proxy-groups:
+
+# 分流分组
+
+- {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
+
+- {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
+
+- {name: 苹果服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png, <<: *pr}
+
+- {name: 微软服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png, <<: *pr}
+
+- {name: 谷歌服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
+
+- {name: 电报消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
+
+- {name: 推特消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png, <<: *pr}
+
+- {name: 游戏平台, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png, <<: *pr}
+
+- {name: 哔哩哔哩, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png, type: select, proxies: [DIRECT, 香港节点, 台湾节点]}
+
+- {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, <<: *pr}
+
+- {name: 广告拦截, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png, type: select, proxies: [REJECT, DIRECT]}
+
+- {name: 兜底分流, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
+
+# 节点地区分流
+
+- {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}
+
+- {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
+
+- {name: 香港节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png, <<: *auto, filter: "港|HK|(?i)Hong"}
+
+- {name: 日本节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png, <<: *auto, filter: "日|东京|JP|(?i)Japan"}
+
+- {name: 美国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png, <<: *auto, filter: "美|US|(?i)States|American"}
+
+- {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png, <<: *auto, filter: "台|湾|TW|(?i)Taiwan"}
+
+- {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "新|狮|坡|SG|(?i)Singapore"}
+  
+- {name: 英国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png, <<: *auto, filter: "英|UK|(?i)Kingdom"}
+  
+- {name: 澳洲节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png, <<: *auto, filter: "澳|AU|(?i)Austria"}
+ 
+- {name: 印度节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/India.png, <<: *auto, filter: "印度|印|IN|India"}
+
+
+rules:
+  - SCRIPT,quic,REJECT
+  - GEOSITE,category-ads-all,广告拦截
+  - GEOSITE,private,DIRECT
+  - GEOIP,private,DIRECT
+  - GEOSITE,category-games,游戏平台
+  - GEOSITE,youtube,国际媒体
+  - GEOIP,netflix,国际媒体
+  - GEOSITE,netflix,国际媒体
+  - GEOSITE,hbo,国际媒体
+  - GEOSITE,disney,国际媒体
+  - GEOSITE,primevideo,国际媒体
+  - GEOSITE,openai,OpenAI
+  - GEOSITE,github,微软服务
+  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,telegram,电报消息
+  - GEOIP,telegram,电报消息
+  - GEOIP,twitter,推特消息
+  - GEOSITE,twitter,推特消息
+  - GEOSITE,apple,苹果服务
+  - GEOSITE,microsoft,微软服务
+  - GEOIP,google,谷歌服务
+  - GEOSITE,google,谷歌服务
+  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,geolocation-!cn,国外网站
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,兜底分流
+
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
