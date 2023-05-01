@@ -108,7 +108,7 @@ proxy-groups:
 
  - {name: 📟 电报消息, <<: *pr}
 
- - {name: 🐦 推特服务, <<: *pr}
+ - {name: 🐦 推特消息, <<: *pr}
  
  - {name: 🤖 OpenAI, <<: *pr}
 
@@ -237,7 +237,7 @@ rules:
   - RULE-SET,Github,🧩 微软服务  
   - RULE-SET,Google,🌌 谷歌服务
   - RULE-SET,Telegram,📟 电报消息
-  - RULE-SET,Twitter,🐦 推特服务
+  - RULE-SET,Twitter,🐦 推特消息
   - RULE-SET,OpenAI,🤖 OpenAI
   - RULE-SET,BiliBili,📺 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
