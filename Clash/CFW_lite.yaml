@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/26
+# 最后更新时间: 2023/5/1
 #
 # ================
 
@@ -163,6 +163,6 @@ rules:
   - RULE-SET,proxy,🌏 国外网站
   - RULE-SET,direct,🌏 国内网站
   - RULE-SET,lancidr,DIRECT
-  - RULE-SET,cncidr,🌏 国内网站,no-resolve
-  - GEOIP,CN,🌏 国内网站,no-resolve
+  - RULE-SET,cncidr,🌏 国内网站
+  - GEOIP,CN,🌏 国内网站
   - MATCH,🌏 国外网站
