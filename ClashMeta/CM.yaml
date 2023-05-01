@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/4/26
+# 最后更新时间: 2023/5/1
 #
 # ================
 
@@ -151,7 +151,7 @@ proxy-groups:
 
  - {name: 📟 电报消息, <<: *pr}
 
- - {name: 🐦 推特服务, <<: *pr}
+ - {name: 🐦 推特消息, <<: *pr}
  
  - {name: 🤖 OpenAI, <<: *pr}
 
@@ -240,7 +240,7 @@ rules:
   - RULE-SET,Microsoft,🧩 微软服务
   - GEOIP,google,🌌 谷歌服务,no-resolve
   - GEOIP,telegram,📟 电报消息,no-resolve
-  - GEOIP,twitter,🐦 推特服务,no-resolve
+  - GEOIP,twitter,🐦 推特消息,no-resolve
   - RULE-SET,OpenAI,🤖 OpenAI
   - RULE-SET,BiliBili,📺 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
