@@ -189,62 +189,34 @@ proxy-groups:
   
 rule-providers:
 
-  lancidr: # 局域网
-    <<: *i
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
-    path: ./ruleset/lancidr.yaml
 
-  GlobalMedia: # 国际媒体
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml
-    path: ./ruleset/GlobalMedia.yaml
-    interval: 86400
 
-  Apple: # 苹果
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Classical.yaml
-    path: ./ruleset/Apple.yaml
-    interval: 86400
-
-  Microsoft: # 微软
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml
-    path: ./ruleset/Microsoft.yaml
-    
-  Github: # 微软
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml
-    path: ./ruleset/Github.yaml
-
-  BiliBili: # 哔哩哔哩
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml
-    path: ./ruleset/BiliBili.yaml
-    
-  OpenAI: # AI平台
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
-    path: ./ruleset/OpenAI.yaml
-    
-  Game: # 游戏平台
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
-    path: ./ruleset/Game.yaml
+ 
     
 rules:
-  - RULE-SET,lancidr,DIRECT
-  - GEOSITE,category-ads-all,🆎 AdBlock
-  - RULE-SET,GlobalMedia,📹 国际媒体
-  - RULE-SET,Apple,🍎 苹果服务
-  - RULE-SET,Github,🧩 微软服务
-  - RULE-SET,Microsoft,🧩 微软服务
-  - GEOIP,google,🌌 谷歌服务,no-resolve
-  - GEOIP,telegram,📟 电报消息,no-resolve
-  - GEOIP,twitter,🐦 推特消息,no-resolve
-  - RULE-SET,OpenAI,🤖 OpenAI
-  - RULE-SET,BiliBili,📺 哔哩哔哩
-  - RULE-SET,Game,🎮 游戏平台
-  - GEOSITE,gfw,🌏 国外网站
-  - GEOSITE,CN,🌏 国内网站
-  - GEOIP,CN,🌏 国内网站,no-resolve
-  - MATCH,🐟 漏网之鱼
+  - GEOSITE,category-ads-all,🛑 AdBlock
+  - GEOSITE,private,DIRECT
+  - GEOIP,private,DIRECT
+  - GEOSITE,category-games,🎮 游戏平台
+  - GEOSITE,youtube,📹 国际媒体
+  - GEOIP,netflix,📹 国际媒体
+  - GEOSITE,netflix,📹 国际媒体
+  - GEOSITE,hbo,📹 国际媒体
+  - GEOSITE,disney,📹 国际媒体
+  - GEOSITE,primevideo,📹 国际媒体
+  - GEOSITE,openai,🤖 OpenAI
+  - GEOSITE,github,🧩 微软服务
+  - GEOSITE,bilibili,📺 哔哩哔哩
+  - GEOSITE,telegram,📟 电报消息
+  - GEOIP,telegram,📟 电报消息
+  - GEOIP,twitter,🐦 推特消息
+  - GEOSITE,twitter,🐦 推特消息
+  - GEOSITE,apple,🍎 苹果服务
+  - GEOSITE,microsoft,🧩 微软服务
+  - GEOIP,google,🌌 谷歌服务
+  - GEOSITE,google,🌌 谷歌服务
+  - GEOSITE,bilibili,📺 哔哩哔哩
+  - GEOSITE,geolocation-!cn,🌏 国外网站
+  - GEOSITE,cn,🌏 国内网站
+  - GEOIP,CN,🌏 国内网站
+  - MATCH,兜底分流
