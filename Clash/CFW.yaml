@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/2
+# 最后更新时间: 2023/5/3
 #
 # ================
 
@@ -163,8 +163,9 @@ rule-providers:
     
   Ad: # 广告
     <<: *d
-    url: https://anti-ad.net/clash.yaml
-    path: ./ruleset/anti-ad-clash.yaml
+    url: https://anti-ad.net/surge.txt
+    format: text
+    path: ./ruleset/surge.txt
     
   GlobalMedia: # 国际媒体
     <<: *c
@@ -225,8 +226,9 @@ rule-providers:
     <<: *c
     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml
     path: ./ruleset/ProxyLite.yaml
-    
+
 rules:
+  - SCRIPT,quic,REJECT
   - RULE-SET,Direct,DIRECT
   - RULE-SET,Lan,DIRECT
   - RULE-SET,Download,DIRECT
@@ -237,7 +239,7 @@ rules:
   - RULE-SET,Github,🧩 微软服务  
   - RULE-SET,Google,🌌 谷歌服务
   - RULE-SET,Telegram,📟 电报消息
-  - RULE-SET,Twitter,🐦 推特消息
+  - RULE-SET,Twitter,🐦 推特服务
   - RULE-SET,OpenAI,🤖 OpenAI
   - RULE-SET,BiliBili,📺 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
@@ -245,3 +247,7 @@ rules:
   - RULE-SET,ChinaIP,🌏 国内网站
   - GEOIP,CN,🌏 国内网站
   - MATCH,🐟 漏网之鱼
+
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
