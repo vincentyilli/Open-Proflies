@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/1
+# 最后更新时间: 2023/5/3
 #
 # ================
 
@@ -94,13 +94,20 @@ dns:
     geoip-code: CN        # 当 nameserver 域名的 IP 查询 geoip 库为 CN 时，不使用 fallback 中的 DNS 查询结果
     geosite:              # 配置强制 fallback，优先于 IP 判断，具体分类自行查看 geosite 库
       - gfw
+      - geolocation-!cn
     ipcidr:               # 在这个网段内的 IP 地址会被考虑为被污染的 IP
       - 240.0.0.0/4
     domain:               # 这些域名被视为已污染,匹配到这些域名,会直接使用fallback解析,不去使用nameserver
       - '+.google.com'
-      - '+.facebook.com'
-      - '+.youtube.com'
-    
+      - '+.github.com'
+      - '+.youtube.com'  
+      - "+.bing.com"
+      - "+.bing.net"
+      - "+.microsoft.com"
+      - "+.microsoftapp.net"
+      - "+.msn.com"
+      - "+.trafficmanager.com"
+      
 ###建立锚点
     
 # 策略组引用相关
@@ -187,11 +194,7 @@ proxy-groups:
  
  - {name: 🇮🇳 印度节点, <<: *auto, filter: "印度|印|IN|India"}
   
-rule-providers:
 
-
-
- 
     
 rules:
   - GEOSITE,category-ads-all,🛑 AdBlock
