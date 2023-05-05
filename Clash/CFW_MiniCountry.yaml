@@ -165,9 +165,8 @@ rule-providers:
     
   Ad: # 广告
     <<: *d
-    url: https://anti-ad.net/surge.txt
-    format: text
-    path: ./ruleset/surge.txt
+    url: https://anti-ad.net/clash.yaml
+    path: ./ruleset/anti-ad-clash.yaml
     
   GlobalMedia: # 国际媒体
     <<: *c
