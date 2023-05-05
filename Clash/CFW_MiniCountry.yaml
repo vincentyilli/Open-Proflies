@@ -61,8 +61,8 @@ dns:
 ###建立锚点
 
 # 策略组引用相关
-pr: &pr {type: select, proxies: [🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, DIRECT]}
-#pr: &pr {type: select, proxies: [🚀 自动切换, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, DIRECT]}
+pr: &pr {type: select, proxies: [🚀 自动选择, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, DIRECT]}
+#pr: &pr {type: select, proxies: [🚀 自动选择, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, DIRECT]}
 
 # 订阅更新和延迟测试相关
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
@@ -88,6 +88,7 @@ proxy-providers:
   Subscribe:
     <<: *p
     url: "https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    #path: ./sub.yaml
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
     # Sub-Store生成的链接，可以直接替换上述url引号中的部分，具体见Sub-Store教程
           
@@ -128,7 +129,7 @@ proxy-groups:
  
  - {name: 🚀 手动切换, <<: *use}
 
- - {name: 🚀 自动切换, <<: *auto}
+ - {name: 🚀 自动选择, <<: *auto}
 
  - {name: 🇭🇰 香港节点, <<: *auto, filter: "港|HK|(?i)Hong"}
 
@@ -240,7 +241,7 @@ rules:
   - RULE-SET,Github,🧩 微软服务  
   - RULE-SET,Google,🌌 谷歌服务
   - RULE-SET,Telegram,📟 电报消息
-  - RULE-SET,Twitter,🐦 推特服务
+  - RULE-SET,Twitter,🐦 推特消息
   - RULE-SET,OpenAI,🤖 OpenAI
   - RULE-SET,BiliBili,📺 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
