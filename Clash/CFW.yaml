@@ -87,6 +87,7 @@ proxy-providers:
   Subscribe:
     <<: *p
     url: "https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true"
+    #path: ./sub.yaml
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
     # Sub-Store生成的链接，可以直接替换上述url引号中的部分，具体见Sub-Store教程
           
@@ -142,7 +143,7 @@ proxy-groups:
 
  - {name: 🚀 手动切换, <<: *use}
 
- - {name: 🚀 自动切换, <<: *auto}
+ - {name: 🚀 自动选择, <<: *auto}
 
 rule-providers:
 
@@ -238,7 +239,7 @@ rules:
   - RULE-SET,Github,🧩 微软服务  
   - RULE-SET,Google,🌌 谷歌服务
   - RULE-SET,Telegram,📟 电报消息
-  - RULE-SET,Twitter,🐦 推特服务
+  - RULE-SET,Twitter,🐦 推特消息
   - RULE-SET,OpenAI,🤖 OpenAI
   - RULE-SET,BiliBili,📺 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
