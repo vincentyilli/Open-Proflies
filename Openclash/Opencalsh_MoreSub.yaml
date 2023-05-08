@@ -71,7 +71,7 @@ pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇯🇵 日本节点, �
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
 
 # 自动选择相关
-auto: &auto {type: url-test, lazy: true, url: http://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
+auto: &auto {type: url-test, lazy: true, url: http://www.gstatic.com/generate_204, interval: 900, use: [Sub1, Sub2]}
 
 # 手动选择相关
 use: &use {type: select, use: [Sub1, Sub2]}
