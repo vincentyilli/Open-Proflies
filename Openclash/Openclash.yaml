@@ -61,7 +61,7 @@ dns:
 ###建立锚点
     
 # 策略组引用相关
-pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, 🚀 自动切换, 🚀 手动切换, DIRECT]}
+pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, 🚀 自动选择, 🚀 手动切换, DIRECT]}
 
 # 订阅更新和延迟测试相关
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
@@ -141,7 +141,7 @@ proxy-groups:
 
  - {name: 🚀 手动切换, <<: *use}
 
- - {name: 🚀 自动切换, <<: *auto}
+ - {name: 🚀 自动选择, <<: *auto}
 
 rule-providers:
 
@@ -235,6 +235,6 @@ rules:
   - RULE-SET,BiliBili,🎬 哔哩哔哩
   - RULE-SET,Game,🎮 游戏平台
   - RULE-SET,ProxyLite,🌏 国外网站
-  - RULE-SET,ChinaIP,🌏 国内网站,no-resolve
-  - GEOIP,CN,🌏 国内网站,no-resolve
+  - RULE-SET,ChinaIP,🌏 国内网站
+  - GEOIP,CN,🌏 国内网站
   - MATCH,🐟 漏网之鱼

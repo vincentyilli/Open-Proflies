@@ -74,7 +74,7 @@ p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www
 auto: &auto {type: url-test, lazy: true, url: http://www.gstatic.com/generate_204, interval: 900, use: [Subscribe]}
 
 # 手动选择相关
-use: &use {type: select, use: [Sub1, Sub2, Sub3]}
+use: &use {type: select, use: [Sub1, Sub2]}
 
 # classical规则相关
 c: &c {type: http, behavior: classical, interval: 86400}
@@ -97,10 +97,6 @@ proxy-providers:
     <<: *p
     url: "https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true"
     path: ./Sub2.yaml
-  Sub3:
-    <<: *p
-    url: "https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true"
-    path: ./Sub3.yaml
 
 proxies: null
 
