@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/8
+# 最后更新时间: 2023/5/9
 #
 # ================
 
@@ -61,7 +61,7 @@ dns:
 ###建立锚点
     
 # 策略组引用相关
-pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, 🚀 自动选择, 🚀 手动切换, DIRECT]}
+pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, ♻️ 自动选择, 🚀 手动切换, DIRECT]}
 
 # 订阅更新和延迟测试相关
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
@@ -123,25 +123,25 @@ proxy-groups:
  
  #节点地区分组
  
- - {name: 🇭🇰 香港节点, <<: *use, filter: "港|HK|(?i)Hong"}
+ - {name: 🇭🇰 香港节点, <<: *auto, filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)"}
 
- - {name: 🇯🇵 日本节点, <<: *use, filter: "日|东京|JP|(?i)Japan"}
+ - {name: 🇯🇵 日本节点, <<: *auto, filter: "(?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)"}
 
- - {name: 🇺🇲 美国节点, <<: *use, filter: "美|(?i)States|American"}
+ - {name: 🇺🇲 美国节点, <<: *auto, filter: "(?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)"}
 
- - {name: 🇨🇳 台湾节点, <<: *use, filter: "台|湾|TW|(?i)Taiwan"}
+ - {name: 🇨🇳 台湾节点, <<: *auto, filter: "(?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)"}
 
- - {name: 🇸🇬 狮城节点, <<: *use, filter: "新|狮|坡|SG|(?i)Singapore"}
+ - {name: 🇸🇬 狮城节点, <<: *auto, filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)"}
   
- - {name: 🇬🇧 英国节点, <<: *use, filter: "英|UK|(?i)Kingdom"}
+ - {name: 🇬🇧 英国节点, <<: *auto, filter: "(?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)"}
   
- - {name: 🇦🇺 澳洲节点, <<: *use, filter: "澳|AU|(?i)Austria"}
+ - {name: 🇦🇺 澳洲节点, <<: *auto, filter: "(?i)🇦🇺|澳大利亚|(\b(AU|Australia)\b)"}
  
- - {name: 🇮🇳 印度节点, <<: *use, filter: "印度|印|IN|India"}
-
+ - {name: 🇮🇳 印度节点, <<: *auto, filter: "(?i)🇮🇳|印度|班加罗尔|孟买|(\b(Mumbai|IN|India)\b)"}
+ 
  - {name: 🚀 手动切换, <<: *use}
 
- - {name: 🚀 自动选择, <<: *auto}
+ - {name: ♻️ 自动选择, <<: *auto}
 
 rule-providers:
 
