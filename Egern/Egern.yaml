@@ -182,10 +182,10 @@ rules: #分流规则
 
   - rule_set: #广告
       match: "https://anti-ad.net/clash.yaml"
-      policy: 广告拦截
+      policy: 🛑 AdBlock
 
   - rule_set: #哔哩哔哩
-      match: "https://raw.githubusercontent.com/Coldvvater/Mononoke/master/Egern/RuleSet/NobyDa/bilibili.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml"
       policy: 📺 哔哩哔哩
 
   - rule_set: #国际媒体
