@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/15
+# 最后更新时间: 2023/5/16
 #
 # ================
 
@@ -18,17 +18,6 @@ mode: rule            # 规则模式：rule（规则） / global（全局代理�
 log-level: info       # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
 external-controller: 127.0.0.1:9090   #外部控制器,可以使用 RESTful API 来控制你的 clash 内核
 
-hosts:
-  # > APP Store下载加速
-  "token.safebrowsing.apple": "17.253.85.207"
-  "proxy.safebrowsing.apple": "17.253.85.208"
-  "iosapps.itunes.apple.com": "17.253.85.201"
-  "iosapps.itunes.g.aaplimg.com": "17.253.85.206"
-  "k128-iosapps-all.gslb.ksyuncdn.com": "17.253.85.201"
-  "iosapps.itunes.apple.com.m.alikunlun.net": "17.253.85.201"
-  "iosapps.itunes.apple.com.download.ks-cdn.com": "17.253.85.201"
-  #"hls.itunes.apple.com.mwcname.com": 17.253.85.201"
-  "iosapps-cn-lb.dl-apple.com.akadns.net": "17.253.85.201"
 
 dns:
   enable: true             # 关闭将使用系统 DNS
