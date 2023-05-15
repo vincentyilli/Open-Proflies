@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/9
+# 最后更新时间: 2023/5/15
 #
 # ================
 
@@ -90,144 +90,122 @@ proxies:
 
 proxy-providers:
 # > 远程服务器
-  Subscribe:
-    <<: *p
-    url: http://your-service-provider
-
+ Subscribe: {<<: *p, url: http://your-service-provider}
 
 proxy-groups:
 
-# 分流分组
+ # 分流分组
 
-- {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
+ - {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
 
-- {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
+ - {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
 
-- {name: 苹果服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png, <<: *pr}
+ - {name: 苹果服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png, <<: *pr}
 
-- {name: 微软服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png, <<: *pr}
+ - {name: 微软服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png, <<: *pr}
 
-- {name: 谷歌服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
+ - {name: 谷歌服务, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png, <<: *pr}
 
-- {name: 电报消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
+ - {name: 电报消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png, <<: *pr}
 
-- {name: 推特消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png, <<: *pr}
+ - {name: 推特消息, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png, <<: *pr}
 
-- {name: 游戏平台, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png, <<: *pr}
+ - {name: 游戏平台, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png, <<: *pr}
 
-- {name: 哔哩哔哩, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png, type: select, proxies: [DIRECT, 香港节点, 台湾节点]}
+ - {name: 哔哩哔哩, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png, type: select, proxies: [DIRECT, 香港节点, 台湾节点]}
 
-- {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, <<: *pr}
+ - {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, <<: *pr}
 
-- {name: 广告拦截, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png, type: select, proxies: [REJECT, DIRECT]}
+ - {name: 广告拦截, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png, type: select, proxies: [REJECT, DIRECT]}
 
-- {name: 兜底分流, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
+ - {name: 兜底分流, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png, <<: *pr}
 
-# 节点地区分流
+ # 节点地区分流
 
-- {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
+ - {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
 
-- {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}
-
-- {name: 香港节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png, <<: *auto, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
-
-- {name: 日本节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png, <<: *auto, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
-
-- {name: 美国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png, <<: *auto, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
-
-- {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png, <<: *auto, filter: "^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
-
-- {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
-  
-- {name: 英国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png, <<: *auto, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
-  
-- {name: 澳洲节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png, <<: *auto, filter: "^(?=.*((?i)🇦🇺|澳大利亚|(\b(AU|Australia)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+ - {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}
  
-- {name: 印度节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/India.png, <<: *auto, filter: "^(?=.*((?i)🇮🇳|印度|班加罗尔|孟买|(\b(Mumbai|IN|India)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+ - {name: 香港节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png, <<: *auto, filter: "^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+
+ - {name: 日本节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png, <<: *auto, filter: "^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+
+ - {name: 美国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png, <<: *auto, filter: "^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+
+ - {name: 台湾节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png, <<: *auto, filter: "^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+
+ - {name: 狮城节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png, <<: *auto, filter: "^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+  
+ - {name: 英国节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_Kingdom.png, <<: *auto, filter: "^(?=.*((?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+  
+ - {name: 澳洲节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Australia.png, <<: *auto, filter: "^(?=.*((?i)🇦🇺|澳大利亚|(\b(AU|Australia)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
+ 
+ - {name: 印度节点, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/India.png, <<: *auto, filter: "^(?=.*((?i)🇮🇳|印度|班加罗尔|孟买|(\b(Mumbai|IN|India)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$"}
 
 rule-providers:
 
-  Ad: # 广告
-    <<: *d
-    url: https://anti-ad.net/clash.yaml
-    path: ./ruleset/BanAD.yaml
-    
-  Apple: # 苹果
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Apple.yaml
-    path: ./ruleset/Apple.yaml
-    
-  BiliBili: # 哔哩哔哩
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml
-    path: ./ruleset/BiliBili.yaml
+ # 规则修正
+ Direct: {<<: *d, path: ./ruleset/Direct.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml}
 
-  ChinaIp: # 中国大陆IP
-    <<: *i
-    url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml
-    path: ./ruleset/ChinaIp.yaml
-        
-  Game: # 游戏平台
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml
-    path: ./ruleset/Game.yaml
-    
-  ProxyMedia: # 国际媒体
-    <<: *c
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml
-    path: ./ruleset/ProxyMedia.yaml
+ # 局域网   
+ Lan: {<<: *d, path: ./ruleset/Lan.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml}
+   
+ #广告拦截
+ Anti-AD: {<<: *d, path: ./ruleset/anti-ad-clash.yaml, url: https://anti-ad.net/clash.yaml}
 
-  Google: # 谷歌
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml
-    path: ./ruleset/Google.yaml
-    
-  Lan: # 局域网
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
-    path: ./ruleset/LocalAreaNetwork.yaml
+ #HTTPDNS拦截
+ HTTPDNS: {<<: *d, path: ./ruleset/HTTPDNS.Block.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.yaml}
 
-  Microsoft: # 微软
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml
-    path: ./ruleset/Microsoft.yaml
+ # 国际媒体
+ ProxyMedia: {<<: *c, path: ./ruleset/ProxyMedia.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml}
 
-  ProxyLite: # 代理网站
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml
-    path: ./ruleset/ProxyLite.yaml
+ # 苹果服务
+ Apple: {<<: *d, path: ./ruleset/Apple.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Apple.yaml}
 
-  Telegram: # 电报消息
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml
-    path: ./ruleset/Telegram.yaml
-    
-  Twitter: # 推特消息
-    <<: *d
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Twitter.yaml
-    path: ./ruleset/Twitter.yaml
-    
-  OpenAI: # AI平台
-    <<: *c
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml
-    path: ./ruleset/OpenAI.yaml
+ # 微软服务 
+ Microsoft: {<<: *d, path: ./ruleset/Microsoft.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml}
+
+ # 谷歌服务
+ Google: {<<: *d, path: ./ruleset/Google.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml}
+
+ # 电报消息
+ Telegram: {<<: *d, path: ./ruleset/Telegram.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml}
+
+ # 推特消息
+ Twitter: {<<: *d, path: ./ruleset/Twitter.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Twitter.yaml}
+
+ # 哔哩哔哩
+ BiliBili: {<<: *d, path: ./ruleset/BiliBili.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml}
+
+ # 游戏平台
+ Game: {<<: *c, path: ./ruleset/Game.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml}
+
+ # AI平台
+ OpenAI: {<<: *c, path: ./ruleset/OpenAI.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml}
+
+ # 中国大陆
+ ChinaIP: {<<: *i, path: ./ruleset/ChinaIP.yaml, url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml}
+
+ # 代理网站
+ ProxyLite: {<<: *d, path: ./ruleset/ProxyLite.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml}
 
 rules:
-- RULE-SET,Lan,DIRECT
-- RULE-SET,Ad,广告拦截
-- RULE-SET,ProxyMedia,国际媒体
-- RULE-SET,Apple,苹果服务
-- RULE-SET,Microsoft,微软服务
-- RULE-SET,Google,谷歌服务
-- RULE-SET,Twitter,推特消息
-- RULE-SET,Telegram,电报消息
-- RULE-SET,BiliBili,哔哩哔哩
-- RULE-SET,Game,游戏平台
-- RULE-SET,OpenAI,OpenAI
-- RULE-SET,ProxyLite,国外网站
-- RULE-SET,ChinaIp,DIRECT,no-resolve
-- GEOIP,CN,DIRECT,no-resolve
-- MATCH,兜底分流
+ - RULE-SET,Lan,DIRECT
+ - RULE-SET,HTTPDNS,广告拦截
+ - RULE-SET,Anti-AD,广告拦截
+ - RULE-SET,ProxyMedia,国际媒体
+ - RULE-SET,Apple,苹果服务
+ - RULE-SET,Microsoft,微软服务
+ - RULE-SET,Google,谷歌服务
+ - RULE-SET,Twitter,推特消息
+ - RULE-SET,Telegram,电报消息
+ - RULE-SET,BiliBili,哔哩哔哩
+ - RULE-SET,Game,游戏平台
+ - RULE-SET,OpenAI,OpenAI
+ - RULE-SET,ProxyLite,国外网站
+ - RULE-SET,ChinaIp,DIRECT
+ - GEOIP,CN,DIRECT
+ - MATCH,兜底分流
 
 script:
   shortcuts:

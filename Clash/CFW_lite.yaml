@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/8
+# 最后更新时间: 2023/5/15
 #
 # ================
 
@@ -81,12 +81,9 @@ i: &i {type: http, behavior: ipcidr, interval: 86400}
 ###结束
 
 proxy-providers:
-  Subscribe:
-    <<: *p
-    url: "https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true"
-    #path: ./sub.yaml
+  Subscribe: {<<: *p, url: https://sub.xeton.dev/sub?target=clash&url=你的订阅链接&list=true&udp=true}
     # 可以使用任意类型的链接替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
-    # Sub-Store生成的链接，可以直接替换上述url引号中的部分，具体见Sub-Store教程
+    # Sub-Store生成的链接，可以直接替换上述url引号中的部分，具体见Sub-Store教程        
           
 proxies: null
 
@@ -96,78 +93,52 @@ proxy-groups:
  
  - {name: 📟 电报消息, <<: *use}
  
- - {name: 🌏 国内网站, type: select, proxies: [DIRECT]}
- 
- - {name: 🆎 广告拦截, type: select, proxies: [REJECT, DIRECT]}
- 
- 
 rule-providers:
-  Ad: # 广告
-    <<: *d
-    url: https://anti-ad.net/surge.txt
-    format: text
-    path: ./ruleset/surge.txt
-    
-  icloud: # 苹果
-    <<: *d
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
-    path: ./ruleset/icloud.yaml
 
-  apple: # 苹果
-    <<: *d
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
-    path: ./ruleset/apple.yaml
+ #广告拦截
+ Anti-AD: {<<: *d, path: ./ruleset/anti-ad-clash.yaml, url: https://anti-ad.net/clash.yaml}
 
-  proxy: # 代理网站
-    <<: *d
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
-    path: ./ruleset/proxy.yaml
+ #苹果服务
+ icloud: {<<: *d, path: ./ruleset/icloud.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt}
+ apple: {<<: *d, path: ./ruleset/apple.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt}
 
-  direct: # 直连网站
-    <<: *d
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
-    path: ./ruleset/direct.yaml
+ #代理网站
+ proxy: {<<: *d, path: ./ruleset/proxy.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt}
 
-  private: # 私人域名
-    <<: *d
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
-    path: ./ruleset/private.yaml
+ #直连网站
+ direct: {<<: *d, path: ./ruleset/direct.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt}
 
-  telegramcidr: # 电报
-    <<: *i
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
-    path: ./ruleset/telegramcidr.yaml
+ #私人域名
+ private: {<<: *d, path: ./ruleset/private.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt}
 
-  cncidr: # 中国大陆IP
-    <<: *i
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
-    path: ./ruleset/cncidr.yaml
+ #电报消息
+ telegramcidr: {<<: *i, path: ./ruleset/telegramcidr.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt}
 
-  lancidr: # 局域网
-    <<: *i
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
-    path: ./ruleset/lancidr.yaml
+ #中国大陆IP
+ cncidr: {<<: *i, path: ./ruleset/cncidr.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt}
 
-  applications: # 应用
-    <<: *c
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
-    path: ./ruleset/applications.yaml
+ #局域网
+ lancidr: {<<: *i, path: ./ruleset/lancidr.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt}
+
+ #应用
+ applications: {<<: *c, path: ./ruleset/applications.yaml, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt}
+
     
 rules:
   - SCRIPT,quic,REJECT
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
-  - RULE-SET,private,🌏 国内网站
-  - RULE-SET,Ad,🆎 广告拦截
-  - RULE-SET,telegramcidr,📟 电报消息
-  - RULE-SET,icloud,🌏 国内网站
-  - RULE-SET,apple,🌏 国内网站
+  - RULE-SET,private,DIRECT
+  - RULE-SET,Ad,REJECT
+  - RULE-SET,telegramcidr,🌏 国外网站
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
   - RULE-SET,proxy,🌏 国外网站
-  - RULE-SET,direct,🌏 国内网站
+  - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
-  - RULE-SET,cncidr,🌏 国内网站
-  - GEOIP,CN,🌏 国内网站
+  - RULE-SET,cncidr,DIRECT
+  - GEOIP,CN,DIRECT
   - MATCH,🌏 国外网站
   
 script:

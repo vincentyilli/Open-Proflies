@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/9
+# 最后更新时间: 2023/5/15
 #
 # ================
 
@@ -134,10 +134,7 @@ i: &i {type: http, behavior: ipcidr, interval: 86400}
 ###结束
 
 proxy-providers:
-  Subscribe:
-    <<: *p
-    url: "机场订阅"
-    path: ./all.yaml
+  Subscribe: {<<: *p, path: ./all.yaml, url: 机场订阅}
     # Meta支持机场通用订阅
           
 proxies: null

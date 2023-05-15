@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/8
+# 最后更新时间: 2023/5/15
 #
 # ================
 
@@ -90,44 +90,36 @@ proxies:
 
 proxy-providers:
 # > 远程服务器
-  Subscribe:
-    <<: *p
-    url: http://your-service-provider
+ Subscribe: {<<: *p, url: http://your-service-provider}
 
 
 proxy-groups:
 
-- {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
+ - {name: 国外网站, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png, <<: *pr}
 
-- {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
+ - {name: 国际媒体, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png, <<: *pr}
 
-- {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}  
+ - {name: 手动切换,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Static.png, <<: *use}  
 
-- {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
+ - {name: 自动选择,  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png, <<: *auto}
   
 rule-providers:
 
-  ProxyMedia: # 国际媒体
-    <<: *c
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml
-    path: ./ruleset/ProxyMedia.yaml
-    
-  Proxy: # 代理网站
-    <<: *d
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyGFWlist.yaml
-    path: ./ruleset/ProxyGFWlist.yaml
-    
-  Lan: # 局域网
-    <<: *d
-    url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/LocalAreaNetwork.yaml
-    path: ./ruleset/LocalAreaNetwork.yaml
+ # 国际媒体
+ ProxyMedia: {<<: *c, path: ./ruleset/ProxyMedia.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml}
+
+ #代理网站
+ Proxy: {<<: *d, path: ./ruleset/ProxyGFWlist.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyGFWlist.yaml}
+
+ # 局域网
+ Lan: {<<: *d, path: ./ruleset/lancidr.txt, url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt}
 
 rules:
-- RULE-SET,ProxyMedia,国外网站
-- RULE-SET,Proxy,国外网站
-- RULE-SET,Lan,DIRECT
-- GEOIP,CN,DIRECT,no-resolve
-- MATCH,国外网站
+ - RULE-SET,ProxyMedia,国外网站
+ - RULE-SET,Proxy,国外网站
+ - RULE-SET,Lan,DIRECT
+ - GEOIP,CN,DIRECT
+ - MATCH,国外网站
 
 script:
   shortcuts:
