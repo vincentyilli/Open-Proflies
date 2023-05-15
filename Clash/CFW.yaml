@@ -61,7 +61,8 @@ dns:
 ###建立锚点
     
 # 策略组引用相关
-pr: &pr {type: select, proxies: [♻️ 自动选择, 🚀 手动切换, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, DIRECT]}
+pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点,  🇨🇳 台湾节点, ♻️ 自动选择, 🚀 手动切换, DIRECT]}
+#pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点,  🇨🇳 台湾节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, ♻️ 自动选择, 🚀 手动切换,  DIRECT]}
 
 # 订阅更新和延迟测试相关
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
@@ -98,7 +99,7 @@ proxy-groups:
 
  - {name: 📹 国际媒体, <<: *pr}
 
- - {name: 🍎 苹果服务, <<: *pr}
+ - {name: 🍎 苹果服务, type: select, proxies: [DIRECT, 🇭🇰 香港节点, 🇺🇲 美国节点]}
 
  - {name: 🧩 微软服务, <<: *pr}
 
@@ -124,19 +125,19 @@ proxy-groups:
  
  - {name: 🇭🇰 香港节点, <<: *use, filter: "(?i)🇭🇰|香港|(\b(HK|Hong)\b)"}
 
- - {name: 🇯🇵 日本节点, <<: *use, filter: "(?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)"}
-
  - {name: 🇺🇲 美国节点, <<: *use, filter: "(?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)"}
+
+ - {name: 🇸🇬 狮城节点, <<: *use, filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)"}
+
+ - {name: 🇯🇵 日本节点, <<: *use, filter: "(?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)"}
 
  - {name: 🇨🇳 台湾节点, <<: *use, filter: "(?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)"}
 
- - {name: 🇸🇬 狮城节点, <<: *use, filter: "(?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)"}
+ #- {name: 🇬🇧 英国节点, <<: *auto, filter: "(?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)"}
   
- - {name: 🇬🇧 英国节点, <<: *auto, filter: "(?i)🇬🇧|英国|伦敦|(\b(UK|United Kingdom)\b)"}
-  
- - {name: 🇦🇺 澳洲节点, <<: *auto, filter: "(?i)🇦🇺|澳大利亚|(\b(AU|Australia)\b)"}
+ #- {name: 🇦🇺 澳洲节点, <<: *auto, filter: "(?i)🇦🇺|澳大利亚|(\b(AU|Australia)\b)"}
  
- - {name: 🇮🇳 印度节点, <<: *auto, filter: "(?i)🇮🇳|印度|班加罗尔|孟买|(\b(Mumbai|IN|India)\b)"}
+ #- {name: 🇮🇳 印度节点, <<: *auto, filter: "(?i)🇮🇳|印度|班加罗尔|孟买|(\b(Mumbai|IN|India)\b)"}
  
  - {name: 🚀 手动切换, <<: *use}
 
