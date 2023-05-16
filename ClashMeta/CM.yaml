@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/15
+# 最后更新时间: 2023/5/16
 #
 # ================
 
@@ -111,8 +111,8 @@ dns:
 ###建立锚点
     
 # 策略组引用相关
-pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点,  🇨🇳 台湾节点, ♻️ 自动选择, 🚀 手动切换, DIRECT]}
-#pr: &pr {type: select, proxies: [🇭🇰 香港节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点,  🇨🇳 台湾节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, ♻️ 自动选择, 🚀 手动切换,  DIRECT]}
+pr: &pr {type: select, proxies: [🚀 手动切换, 🇭🇰 香港节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点,  🇨🇳 台湾节点, ♻️ 自动选择, DIRECT]}
+#pr: &pr {type: select, proxies: [🚀 手动切换,  🇭🇰 香港节点, 🇺🇲 美国节点, 🇸🇬 狮城节点, 🇯🇵 日本节点,  🇨🇳 台湾节点, 🇬🇧 英国节点, 🇦🇺 澳洲节点, 🇮🇳 印度节点, ♻️ 自动选择, DIRECT]}
 
 # 订阅更新和延迟测试相关
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: http://www.gstatic.com/generate_204, interval: 1800}}
@@ -143,6 +143,8 @@ proxies: null
 proxy-groups:
 
  #分流分组
+
+ - {name: 🚀 手动切换, <<: *use}
 
  - {name: 🌏 国外网站, <<: *pr}
 
@@ -188,8 +190,6 @@ proxy-groups:
  
  #- {name: 🇮🇳 印度节点, <<: *auto, filter: "(?i)🇮🇳|印度|班加罗尔|孟买|(\b(Mumbai|IN|India)\b)"}
  
- - {name: 🚀 手动切换, <<: *use}
-
  - {name: ♻️ 自动选择, <<: *auto}
   
 
