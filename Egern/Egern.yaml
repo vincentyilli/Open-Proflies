@@ -121,7 +121,7 @@ policy_groups:
   - external:
       name: 🇭🇰 香港节点
       type: auto_test
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*((?i)🇭🇰|香港|(\b(HK|Hong)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$
       interval: 900
       timeout: 2
@@ -130,7 +130,7 @@ policy_groups:
   - external:
       name: 🇯🇵 日本节点
       type: auto_test
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*((?i)🇯🇵|日本|川日|东京|大阪|泉日|埼玉|(\b(JP|Japan)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$
       interval: 900
       timeout: 2
@@ -139,7 +139,7 @@ policy_groups:
   - external:
       name: 🇺🇲 美国节点
       type: auto_test
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*((?i)🇺🇸|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|(\b(US|United States)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$
       interval: 900
       timeout: 2
@@ -148,7 +148,7 @@ policy_groups:
   - external:
       name: 🇨🇳 台湾节点
       type: auto_test
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*((?i)🇹🇼|台湾|(\b(TW|Tai|Taiwan)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$
       interval: 900
       timeout: 2
@@ -157,7 +157,7 @@ policy_groups:
   - external:
       name: 🇸🇬 狮城节点
       type: auto_test
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*((?i)🇸🇬|新加坡|狮|(\b(SG|Singapore)\b)))(?!.*((?i)回国|校园|游戏|(\b(GAME)\b))).*$
       interval: 900
       timeout: 2
@@ -166,62 +166,62 @@ policy_groups:
   - external:
       name: 🚀 手动选择
       type: select
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*(.*))(?!.*((?i)回国|校园|教育|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|到期|过期|已用|联系|邮箱|工单|群|(\b(GAME|USE|USED|TOTAL|EXPIRE|EMAIL)\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$
   - external:
       name: ♻️ 自动切换
       type: auto_test
-      url: "http://your-service-provider"
+      url: "机场订阅"
       filter: ^(?=.*(.*))(?!.*((?i)回国|校园|教育|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|到期|过期|已用|联系|邮箱|工单|群|(\b(GAME|USE|USED|TOTAL|EXPIRE|EMAIL)\b|(\d{4}-\d{2}-\d{2}|\dG)))).*$
 
 
 rules: #分流规则
   - rule_set: #修正规则
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/UnBan.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list"
       policy: DIRECT
 
   - rule_set: #广告
-      match: "https://anti-ad.net/clash.yaml"
+      match: "https://anti-ad.net/surge.txt"
       policy: 🛑 AdBlock
 
   - rule_set: #哔哩哔哩
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list"
       policy: 📺 哔哩哔哩
 
   - rule_set: #国际媒体
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyMedia.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list"
       policy: 📹 国际媒体
 
   - rule_set: #电报
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Telegram.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Telegram.list"
       policy: 📟 电报消息
 
   - rule_set: #推特
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Twitter.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Twitter.list"
       policy: 🐦 推特消息
 
   - rule_set: #苹果
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Apple.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Apple.list"
       policy: 🍎 苹果服务
 
   - rule_set: #微软
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Microsoft.list"
       policy: 🧩 微软服务
 
   - rule_set: #谷歌
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Google.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Google.list"
       policy: 🌌 谷歌服务
 
   - rule_set: #OpenAI
-      match: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list"
       policy: 🤖 OpenAI
 
   - rule_set: #国外网站
-      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ProxyLite.yaml"
+      match: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.listl"
       policy: 🌏 国外网站
 
   - rule_set: #国内IP
-      match: "https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml"
+      match: "https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/surge-ruleset.list"
       policy: 🌏 国内网站
 
   - ip_cidr:
