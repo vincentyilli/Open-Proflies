@@ -1,9 +1,8 @@
-# 基于[@JohnsonRan](https://github.com/JohnsonRan/CRules/blob/master/config/GeneralClashConfig.yml)修改
 # Author:https://github.com/Repcz
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/15
+# 最后更新时间: 2023/5/17
 #
 # ================
 
@@ -12,20 +11,23 @@
 #redir-port: 7892     # Linux 和 macOS 的 redir 代理端口
 mixed-port: 7893      # 混合端口 HTTP和SOCKS5用一个端口
 geodata-mode: true    #【Meta专属】使用geoip.dat数据库(默认：false使用mmdb数据库)
-tcp-concurrent: true  #【Meta专属】TCP 并发连接所有 IP, 将使用最快握手的 TCP
+tcp-concurrent: false  #【Meta专属】TCP 并发连接所有 IP, 将使用最快握手的 TCP
 allow-lan: true       # 允许局域网的连接（可用来共享代理）
 bind-address: "*"     # 仅在将allow-lan设置为true时适用
                       # #"*": 绑定所有IP地址
+find-process-mode: strict           #匹配所有进程（always/strict/off）
 ipv6: false           # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
 mode: rule            # 规则模式：rule（规则） / global（全局代理）/ direct（全局直连）/ script (脚本)
 log-level: info       # 设置日志输出级别 (5 个级别：silent / error / warning / info / debug）
-external-controller: 127.0.0.1:9090   #外部控制器,可以使用 RESTful API 来控制你的 clash 内核
+external-controller: 0.0.0.0:9093   #外部控制器,可以使用 RESTful API 来控制你的 clash 内核
+global-client-fingerprint: chrome   #全局 TLS 指纹，优先低于 proxy 内的 client-fingerprint
+                                    #可选： "chrome","firefox","safari","ios","random","none" options.
 
 geox-url:             #自定义 geodata url
   geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
   geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
-  #mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
-  
+  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+
 profile:
   store-selected: true # 存储 select 选择记录
   store-fake-ip: true  # 持久化 fake-ip
@@ -34,20 +36,20 @@ sniffer:               # 嗅探域名 可选配置
   enable: true
   parse-pure-ip: true  # 是否使用嗅探结果作为实际访问，默认 true
   sniff:
-    TLS:               # TLS 默认如果不配置 ports 默认嗅探 443
+    TLS:               # TLS 默认嗅探 443
       ports: [443, 8443]
     HTTP:
       ports: [80, 8080-8880]
       override-destination: true
   force-domain:        # 强制对此域名进行嗅探
-  - "+.netflix.com"
-  - "+.nflxvideo.net"
-  - "+.amazonaws.com"
-  - "+.media.dssott.com"
-  - 'google.com'
+     - "+.netflix.com"
+     - "+.nflxvideo.net"
+     - "+.amazonaws.com"
+     - "+.media.dssott.com"
+     - 'google.com'
   sniffing:            # 需要嗅探协议
-    - tls
-    - http
+     - tls
+     - http
       
 tun:                   # Tun 配置
   enable: true
@@ -55,38 +57,11 @@ tun:                   # Tun 配置
                        # tun模式堆栈,如无使用问题,建议使用 system 栈;
                        # MacOS 用户推荐 gvisor栈,IOS无法使用system栈
   dns-hijack:          # dns劫持,一般设置为 any:53 即可, 即劫持所有53端口的udp流量
-    - 'any:53'
+     - 'any:53'
 # strict_route: true   # 将所有连接路由到tun来防止泄漏，但你的设备将无法其他设备被访问
   auto-route: true     # 自动设置全局路由，可以自动将全局流量路由进入tun网卡。
-  auto-detect-interface: true   # 自动识别出口网卡
-      
-hosts:
-# '*.clash.dev': 127.0.0.1
-# '.dev': 127.0.0.1
-# 'alpha.clash.dev': '::1'
-# test.com: [1.1.1.1, 2.2.2.2]
-# clash.lan: clash # clash 为特别字段，将加入本地所有网卡的地址
-# baidu.com: google.com # 只允许配置一个别名
-  # > IPv6
-  "ip6-localhost": "::1" # IPv6 Localhost
-  "ip6-loopback": "::1" # IPv6 Loopback
-  "ip6-localnet": "fe00::0" # IPv6 Link-Local
-  "ip6-mcastprefix": "ff00::0" # IPv6 Multicast
-  "ip6-allnodes": "ff02::1" # IPv6 All Nodes
-  "ip6-allrouters": "ff02::2" # IPv6 All Routers
-  "ip6-allhosts": "ff02::3" # IPv6 All Hosts
-  # > Firebase Cloud Messaging
-  "talk.google.com": "108.177.125.188" # Firebase Cloud Messaging
-  "mtalk.google.com": "108.177.125.188" # Firebase Cloud Messaging
-  "alt1-mtalk.google.com": "3.3.3.3" # Firebase Cloud Messaging
-  "alt2-mtalk.google.com": "3.3.3.3" # Firebase Cloud Messaging
-  "alt3-mtalk.google.com": "74.125.200.188" # Firebase Cloud Messaging
-  "alt4-mtalk.google.com": "74.125.200.188" # Firebase Cloud Messaging
-  "alt5-mtalk.google.com": "3.3.3.3" # Firebase Cloud Messaging
-  "alt6-mtalk.google.com": "3.3.3.3" # Firebase Cloud Messaging
-  "alt7-mtalk.google.com": "74.125.200.188" # Firebase Cloud Messaging
-  "alt8-mtalk.google.com": "3.3.3.3" # Firebase Cloud Messaging
-
+  auto-detect-interface: true     # 自动识别出口网卡
+        
 dns:
   enable: true             # 关闭将使用系统 DNS
   ipv6: false              # IPV6解析开关；如果为false，将返回ipv6结果为空
