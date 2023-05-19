@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/15
+# 最后更新时间: 2023/5/19
 #
 # ================
 
@@ -130,7 +130,7 @@ rules:
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
   - RULE-SET,private,DIRECT
-  - RULE-SET,Ad,REJECT
+  - RULE-SET,Anti-AD,REJECT
   - RULE-SET,telegramcidr,🌏 国外网站
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
