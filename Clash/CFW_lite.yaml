@@ -2,7 +2,7 @@
 # TG:https://t.me/RepczChannel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/19
+# 最后更新时间: 2023/5/20
 #
 # ================
 
@@ -90,9 +90,7 @@ proxies: null
 proxy-groups:
 
  - {name: 🌏 国外网站, <<: *use}
- 
- - {name: 📟 电报消息, <<: *use}
- 
+  
 rule-providers:
 
  #广告拦截
