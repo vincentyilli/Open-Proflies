@@ -2,7 +2,7 @@
 # TG:https://t.me/QVQ_Channel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/21
+# 最后更新时间: 2023/5/23
 #
 # ================
 
@@ -27,21 +27,72 @@ dns:
      - 223.5.5.5
      - 119.29.29.29
   fake-ip-range: 198.18.0.1/16    # Fake-IP解析地址池
-  fake-ip-filter:          # fake ip 白名单列表,以下地址不会下发fakeip映射用于连接
-     - '*.lan'
-     - localhost.ptlogin2.qq.com
-     - '+.srv.nintendo.net'
-     - '+.stun.playstation.net'
-     - '+.msftconnecttest.com'
-     - '+.msftncsi.com'
-     - '+.xboxlive.com'
-     - 'msftconnecttest.com'
-     - 'xbox.*.microsoft.com'
-     - '*.battlenet.com.cn'
-     - '*.battlenet.com'
-     - '*.blzstatic.cn'
-     - '*.battle.net'
-     - '*.mcdn.bilivideo.cn'
+  fake-ip-filter:          # fake ip 白名单列表'以下地址不会下发fakeip映射用于连接
+     - '*.lan' 
+     - 'cable.auth.com' 
+     - '*.msftconnecttest.com' 
+     - '*.msftncsi.com' 
+     - 'network-test.debian.org'
+     - 'detectportal.firefox.com' 
+     - 'resolver1.opendns.com' 
+     - '*.srv.nintendo.net' 
+     - '*.stun.playstation.net' 
+     - 'xbox.*.microsoft.com' 
+     - '*.xboxlive.com' 
+     - 'stun.*' 
+     - 'global.turn.twilio.com' 
+     - 'global.stun.twilio.com' 
+     - 'localhost.*.qq.com' 
+     - 'localhost.*.weixin.qq.com' 
+     - '*.logon.battlenet.com.cn' 
+     - '*.logon.battle.net' 
+     - '*.blzstatic.cn' 
+     - 'music.163.com' 
+     - '*.music.163.com' 
+     - '*.126.net' 
+     - 'musicapi.taihe.com' 
+     - 'music.taihe.com' 
+     - 'songsearch.kugou.com' 
+     - 'trackercdn.kugou.com' 
+     - '*.kuwo.cn' 
+     - 'api-jooxtt.sanook.com' 
+     - 'api.joox.com' 
+     - 'joox.com' 
+     - 'y.qq.com' 
+     - '*.y.qq.com' 
+     - 'streamoc.music.tc.qq.com' 
+     - 'mobileoc.music.tc.qq.com' 
+     - 'isure.stream.qqmusic.qq.com' 
+     - 'dl.stream.qqmusic.qq.com' 
+     - 'aqqmusic.tc.qq.com' 
+     - 'amobile.music.tc.qq.com' 
+     - '*.xiami.com' 
+     - '*.music.migu.cn' 
+     - 'music.migu.cn' 
+     - 'proxy.golang.org' 
+     - '*.mcdn.bilivideo.cn' 
+     - '*.cmpassport.com' 
+     - 'id6.me' 
+     - 'open.e.189.cn' 
+     - 'mdn.open.wo.cn' 
+     - 'opencloud.wostore.cn' 
+     - 'auth.wosms.cn' 
+     - '*.jegotrip.com.cn' 
+     - '*.icitymobile.mobi' 
+     - '*.pingan.com.cn' 
+     - '*.cmbchina.com' 
+     - 'pool.ntp.org' 
+     - '*.pool.ntp.org' 
+     - 'ntp.*.com' 
+     - 'time.*.com' 
+     - 'ntp?.*.com' 
+     - 'time?.*.com' 
+     - 'time.*.gov' 
+     - 'time.*.edu.cn' 
+     - '*.ntp.org.cn' 
+     - 'PDC._msDCS.*.*' 
+     - 'DC._msDCS.*.*' 
+     - 'GC._msDCS.*.*'
   nameserver:             # 默认DNS服务器，支持udp/tcp/dot/doh/doq
      - 223.5.5.5
      - 119.29.29.29
@@ -114,7 +165,7 @@ proxy-groups:
 
  - {name: 哔哩哔哩, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png, type: select, proxies: [DIRECT, 香港节点, 台湾节点]}
 
- - {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, <<: *pr}
+ - {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, type: select, proxies: [DIRECT, 🇺🇲 美国节点, 🚀 手动切换]}
 
  - {name: 广告拦截, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png, type: select, proxies: [REJECT, DIRECT]}
 
@@ -148,6 +199,7 @@ rules:
   - GEOSITE,category-ads-all,广告拦截
   - GEOSITE,private,DIRECT
   - GEOIP,private,DIRECT
+  - GEOSITE,openai,OpenAI
   - GEOSITE,category-games,游戏平台
   - GEOSITE,youtube,国际媒体
   - GEOIP,netflix,国际媒体
@@ -155,7 +207,6 @@ rules:
   - GEOSITE,hbo,国际媒体
   - GEOSITE,disney,国际媒体
   - GEOSITE,primevideo,国际媒体
-  - GEOSITE,openai,OpenAI
   - GEOSITE,github,微软服务
   - GEOSITE,bilibili,哔哩哔哩
   - GEOSITE,telegram,电报消息
