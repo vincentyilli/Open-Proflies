@@ -165,7 +165,7 @@ proxy-groups:
 
  - {name: 哔哩哔哩, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png, type: select, proxies: [DIRECT, 香港节点, 台湾节点]}
 
- - {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, type: select, proxies: [DIRECT, 🇺🇲 美国节点, 🚀 手动切换]}
+ - {name: OpenAI, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bot.png, type: select, proxies: [DIRECT, 美国节点, 🚀 手动切换]}
 
  - {name: 广告拦截, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png, type: select, proxies: [REJECT, DIRECT]}
 
