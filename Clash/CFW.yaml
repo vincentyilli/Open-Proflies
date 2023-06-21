@@ -2,7 +2,7 @@
 # TG:https://t.me/QVQ_Channel
 # 以 ';' 或 '#' 或 '//' 开头的配置文件行为注释行
 #
-# 最后更新时间: 2023/5/23
+# 最后更新时间: 2023/6/21
 #
 # ================
 
@@ -197,13 +197,13 @@ proxy-groups:
 rule-providers:
 
  # 规则修正
- Direct: {<<: *d, path: ./ruleset/Direct.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Direct/Direct.yaml}
+ Direct: {<<: *d, path: ./ruleset/Direct.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml}
 
  # 局域网   
- Lan: {<<: *c, path: ./ruleset/Lan.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan.yaml}
+ Lan: {<<: *c, path: ./ruleset/Lan.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml}
 
  # 下载服务
- Download: {<<: *c, path: ./ruleset/Download.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Download/Download.yaml}
+ Download: {<<: *c, path: ./ruleset/Download.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml}
     
  #广告拦截
  Anti-AD: {<<: *d, path: ./ruleset/anti-ad-clash.yaml, url: https://anti-ad.net/clash.yaml}
@@ -212,39 +212,39 @@ rule-providers:
  HTTPDNS: {<<: *d, path: ./ruleset/HTTPDNS.Block.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/HTTPDNS.Block.yaml}
 
  # 国际媒体
- GlobalMedia: {<<: *c, path: ./ruleset/GlobalMedia.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml}
+ GlobalMedia: {<<: *c, path: ./ruleset/GlobalMedia.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml}
 
  # 苹果服务
- Apple: {<<: *c, path: ./ruleset/Apple.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Classical.yaml}
+ Apple: {<<: *c, path: ./ruleset/Apple.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml}
 
  # 微软服务 
- Microsoft: {<<: *c, path: ./ruleset/Microsoft.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Microsoft/Microsoft.yaml}
- Github: {<<: *c, path: ./ruleset/Github.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/GitHub/GitHub.yaml}
+ Microsoft: {<<: *c, path: ./ruleset/Microsoft.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml}
+ Github: {<<: *c, path: ./ruleset/Github.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml}
 
  # 谷歌服务
- Google: {<<: *c, path: ./ruleset/Google.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Google/Google.yaml}
+ Google: {<<: *c, path: ./ruleset/Google.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml}
 
  # 电报消息
- Telegram: {<<: *c, path: ./ruleset/Telegram.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram.yaml}
+ Telegram: {<<: *c, path: ./ruleset/Telegram.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml}
 
  # 推特消息
- Twitter: {<<: *c, path: ./ruleset/Twitter.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Twitter/Twitter.yaml}
+ Twitter: {<<: *c, path: ./ruleset/Twitter.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml}
 
  # 哔哩哔哩
- BiliBili: {<<: *c, path: ./ruleset/BiliBili.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/BiliBili/BiliBili.yaml}
+ BiliBili: {<<: *c, path: ./ruleset/BiliBili.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml}
 
  # 游戏平台
- Game: {<<: *c, path: ./ruleset/Game.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Game/Game.yaml}
+ Game: {<<: *c, path: ./ruleset/Game.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml}
 
  # AI平台
- OpenAI: {<<: *c, path: ./ruleset/OpenAI.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml}
+ OpenAI: {<<: *c, path: ./ruleset/OpenAI.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml}
 
  # 中国大陆
- ChinaIP: {<<: *i, path: ./ruleset/ChinaIP.yaml, url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml}
+ ChinaIP: {<<: *i, path: ./ruleset/ChinaIP.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/soffchen/GeoIP2-CN/release/clash-rule-provider.yml}
 
  # 代理网站
- ProxyLite: {<<: *c, path: ./ruleset/ProxyLite.yaml, url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/ProxyLite/ProxyLite.yaml}
-
+ ProxyLite: {<<: *c, path: ./ruleset/ProxyLite.yaml, url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ProxyLite/ProxyLite.yaml}
+ 
 rules:
   - SCRIPT,quic,REJECT
   - RULE-SET,Direct,DIRECT
